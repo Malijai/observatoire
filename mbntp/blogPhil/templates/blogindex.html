@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+
+
+    <ul>
+    {% for entree in object_list %}
+        <li><em>
+            {{ entree.titre_en }}
+            </em>
+            <br />
+            <a href="{% url 'blogdetail' entree.id %}">Plus</a>
+        <ul>
+        {% for commentaire in entree.commentaire_set.all %}
+            <li>{{commentaire.texte_en}}</li>
+        {% endfor %}
+
+        </ul>
+        </li>
+    {% endfor %}
+    </ul>
+
+<hr />
+<a href="/blog/entree/new">"Ajouter un post"</a>

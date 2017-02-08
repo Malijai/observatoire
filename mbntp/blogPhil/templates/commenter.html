@@ -1,0 +1,8 @@
+<p>
+    <form method="post" action="{% url 'commenter'%}">
+{% csrf_token %}
+
+     <input type="text" name="texte_en" />
+    <input type="submit" name="comment"/>
+    </form>
+</p>

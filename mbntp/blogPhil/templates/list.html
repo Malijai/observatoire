@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    {% for entree in posts %}
+               <div class="post">
+                    <div class="date">
+                         {{ entree.posted }}
+                    </div>
+                    <h1>{{ entree.titre_en }}</h1>
+                    <p>{{ entree.texte_en|linebreaksbr }}</p>
+                    <a href="{% url 'blogdetail' entree.id %}">Plus</a>
+                    <ul>
+                    {% for commentaire in entree.commentaire_set.all %}
+                        <li>{{commentaire.texte_en}}</li>
+                    {% endfor %}
+                    </ul>
+                    </li>
+    {% endfor %}
+        </div>
+    </div>
+
+<hr />
+<a href="/blog/entree/new">"Ajouter un post"</a>
+<hr />
+</div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}

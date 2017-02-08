@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Minimal Django File Upload Example</title>
+    </head>
+
+    <body>
+        <!-- List of uploaded documents -->
+        {% if dossiers %}
+            <ul>
+                {% for dossier in dossiers %}
+                    <li>{{ dossier.nomdossier }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Pas de dossiers</p>
+        {% endif %}
+
+        <!-- Upload form. Note enctype attribute! -->
+    <form method="POST" class="Dossier-form">{% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        <tr><td><button type="submit" class="save btn btn-default">Save</button></td><td></td></tr>
+
+        </table>
+    </form>
+    </body>
+
+</html>
+
+
