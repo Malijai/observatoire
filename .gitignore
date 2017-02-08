@@ -1,1 +1,4 @@
 *.pyc
+*.idea/
+mbntp/db.sqlite3
+media/documents
