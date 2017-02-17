@@ -25,7 +25,7 @@ admin.autodiscover()
 urlpatterns = [
     url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^blog/', include('blogPhil.urls',)),
+    url(r'^blog/', include('blog.urls',)),
     url(r'^docs/', include('myapp.urls', )),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
