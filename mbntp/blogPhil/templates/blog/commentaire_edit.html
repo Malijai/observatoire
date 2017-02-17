@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>nouveau commentaire au post numéro {{ post_id }} {{ Posttitre }}</h1>
+    <h1>nouveau commentaire au billet : {{ Posttitre }}</h1>
 
     <form method="POST" class="Commentaire-form">{% csrf_token %}
         <table>
         {{ form.as_table }}
-        <tr><td><button type="submit" class="save btn btn-default">Save</button></td><td></td></tr>
+        <tr><td><button type="submit" class="btn-default">Save</button></td><td></td></tr>
 
         </table>
         <input type="hidden" name="pk" value="{{ object.id }}" />

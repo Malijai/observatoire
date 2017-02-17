@@ -1,0 +1,39 @@
+{% extends 'docs/base.html' %}
+
+{% block content %}
+
+    {% for par in parent %}
+<h2><a href="/docs/dossiers/{{ par.parentId.id }}">{{ par.parentId }}</a> >> {{ par.nomdossier }}</h2>
+
+    <table>
+        <tr><td><img src="/static/images/folder.png"></td><td></td><td>{{ par.nomdossier }}</td></tr>
+
+
+        {% for doc in documents %}
+        <tr><td></td><td><img src="/static/images/file.png"></td><td><a href="{{ doc.docfile.url }}">{{ doc.nicename }}</td></tr>
+        {% endfor %}
+
+    {% endfor %}
+
+        {% for enfant in enfants %}
+            <tr><td><img src="/static/images/folder.png"></td><td></td><td><a href="/docs/dossiers/{{ enfant.id }}">{{ enfant.nomdossier }}</td></tr>
+        {% endfor %}
+
+    </table>
+{% endblock content %}
+
+{% block lateral %}
+        <!-- Upload form. Note enctype attribute! -->
+
+        <form action="" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+        <ul>
+            {{ form.as_ul }}
+        </ul>
+            <p><input type="submit" value="Télécharger"/></p>
+        </form>
+     <hr />
+    <h2><a href="/docs/dossierslist">Créer un nouveau dossier</a> </h2>
+
+     <hr />
+{% endblock lateral %}

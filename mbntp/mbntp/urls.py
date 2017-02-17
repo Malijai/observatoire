@@ -18,12 +18,12 @@ from django.conf.urls import url, include
 from django.conf.urls.static import static
 
 from django.contrib import admin
-import django.contrib.auth.views as loginviews
+
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^accounts/login/$', loginviews.login),
+    url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blogPhil.urls',)),
     url(r'^docs/', include('myapp.urls', )),

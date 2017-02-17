@@ -22,7 +22,7 @@
         {% else %}
             <p>No documents.</p>
         {% endif %}
-
+    <hr />
         <!-- Upload form. Note enctype attribute! -->
         <form action="{% url "doclist" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -31,6 +31,8 @@
              </table>
             <p><input type="submit" value="Upload"/></p>
         </form>
+     <hr />
+
     </body>
 
 </html>

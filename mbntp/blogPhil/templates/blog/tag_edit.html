@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <h2>Nouveau mot clef</h2>
+
+    <form method="POST" class="Tag-form">{% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <tr><td><button type="submit" class="btn-default">Save</button></td>
+            <td> </td></tr>
+        </table>
+     </form>
+{% endblock %}
+
+
+{% block lateral %}
+<h2>Mots clefs existants</h2>
+    <ul>
+     {% for tag in tags %}
+        <li>{{tag.mot_en}}</a></li>
+     {% endfor %}
+    </ul>
+
+{% endblock lateral %}

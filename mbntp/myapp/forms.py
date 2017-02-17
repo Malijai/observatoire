@@ -18,5 +18,5 @@ class DocumentForm(forms.ModelForm):
 class DossierForm(forms.ModelForm):
     class Meta:
         model = Dossier
-        fields = ('nomdossier',)
+        fields = ('nomdossier','parentId')
         labels = {'nomdossier': ('Définir un dossier'), }

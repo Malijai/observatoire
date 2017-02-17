@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from django.template import RequestContext
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
@@ -7,7 +6,8 @@ from .models import Document, Dossier
 from .forms import DocumentForm, DossierForm
 
 
-def doclist(request):
+def pardossier(request, pid):
+
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -16,37 +16,20 @@ def doclist(request):
             newdoc.dossier = Dossier.objects.get(pk=request.POST['dossier'])
             newdoc.save()
 
-            # Redirect to the document list after POST
-            return HttpResponseRedirect(reverse('doclist'))
+            return HttpResponseRedirect(reverse('dossier', args=[newdoc.dossier.id]))
     else:
         form = DocumentForm()  # A empty, unbound form
 
-    # Load documents for the list page
+    # Load documents for the folder page
+    enfants = Dossier.objects.all().filter(parentId=pid)
+    parent = Dossier.objects.filter(id=pid)
     documents = []
-    for document in Document.objects.all():
+    for document in Document.objects.filter(dossier=pid):
         document.nicename = document.docfile.name.split('/')[-1]
         documents.append(document)
 
-    dossiers = []
-    for dossier in Dossier.objects.all():
-        documents = []
-        for document in Document.objects.filter(dossier=dossier):
-            document.nicename = document.docfile.name.split('/')[-1]
-            documents.append(document)
-            dossiers.append(
-            dict(
-                dossier=dossier,
-                documents=documents,
-            )
-        )
+    return render(request, "docs/dossier.html", {'enfants': enfants, 'parent': parent,'documents': documents, 'pid': pid, 'form': form,})
 
-
-    # Render list page with the documents and the form
-    return render(
-        request,
-        'doclist.html',
-        {'dossiers': dossiers, 'form': form}
-)
 
 def dossier_new(request):
     if request.method == "POST":

@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mbntp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
+
+LOGIN_REDIRECT_URL = '/blog/test/'
 
 LANGUAGE_CODE = 'en-us'
 
