@@ -41,17 +41,31 @@ textarea {
 
 .left_col {
    float:left;
-   width:49%;
+   width:54%;
    min-height: 320px;
 }
 
 .right_col {
    float:right;
-   width:49%;
+   width:43%;
    background-color: #C2DEE7;
    border: 2px solid grey;
    border-radius: 5px;
    min-height: 320px;
+   padding: 0px 0px 0px 10px;
+}
+
+.boitebas {
+   background-color: #E5E5E5;
+   border: 2px solid grey;
+   border-radius: 5px;
+   padding: 0px 0px 0px 10px;
+}
+.boitehaut {
+   min-height: 180px;
+   border: 2px solid grey;
+   border-radius: 5px;
+   padding: 0px 0px 0px 10px;
 }
 
 .page-header {

@@ -142,6 +142,10 @@ font: bold 1em Arial, sans-serif;
     font: bold 1em Arial, sans-serif;
 }
 
+.footergauche {
+   width:74%;
+}
+
 .footer a,.footer a:visited {
     color: #FFFFFF;
     font: bold 1em Arial, sans-serif;

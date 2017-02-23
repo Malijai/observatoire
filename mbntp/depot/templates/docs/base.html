@@ -7,15 +7,22 @@
     <body>
         <div class="page-header">
             <div class="date">
-                <a href="{% url 'logout'%}"> Logout</a>
+                <a href="{% url 'blogindex' %}" class="btn-default">Blog </a>
+                <a href="{% url 'logout' %}" class="btn-default"> Logout</a>
             </div>
          <h1>Observatoire Depot de documents</h1>
         </div>
 <div class="wrap">
 
   <div class="left_col">
-      {% block content %}
-      {% endblock %}
+      <div class="boitehaut">
+          {% block content %}
+          {% endblock %}
+        </div>
+       <div class="boitebas">
+          {% block boitecontent %}
+          {% endblock %}
+       </div>
   </div>
 
   <div class="right_col">

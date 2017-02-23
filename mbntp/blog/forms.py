@@ -23,3 +23,7 @@ class TagForm(forms.ModelForm):
         model = Tag
         fields = ('mot_en', )
         labels = {'mot_en': ('Entrer un mot clef'),}
+
+
+class RechercheForm(forms.Form):
+    recherchetexte = forms.CharField(label='Texte à chercher', max_length=100)

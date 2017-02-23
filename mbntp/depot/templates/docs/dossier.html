@@ -2,38 +2,41 @@
 
 {% block content %}
 
-    {% for par in parent %}
-<h2><a href="/docs/dossiers/{{ par.parentId.id }}">{{ par.parentId }}</a> >> {{ par.nomdossier }}</h2>
-
+{% if parent.parentId.id %}
+    <h4><a href="{% url 'dossier' parent.parentId.id %}">  {{ parent.parentId }}</a></h4>
+{% endif %}
     <table>
-        <tr><td><img src="/static/images/folder.png"></td><td></td><td>{{ par.nomdossier }}</td></tr>
-
+        <tr><td><img src="/static/images/folder.png"></td><td></td><td><h4>{{ parent.nomdossier }}</h4></td></tr>
 
         {% for doc in documents %}
         <tr><td></td><td><img src="/static/images/file.png"></td><td><a href="{{ doc.docfile.url }}">{{ doc.nicename }}</td></tr>
         {% endfor %}
 
-    {% endfor %}
 
-        {% for enfant in enfants %}
-            <tr><td><img src="/static/images/folder.png"></td><td></td><td><a href="/docs/dossiers/{{ enfant.id }}">{{ enfant.nomdossier }}</td></tr>
-        {% endfor %}
+     {% for enfant in enfants %}
+        <tr><td></td><td><img src="/static/images/folder.png"></td><td><a href="{% url 'dossier' enfant.id %}" > {{ enfant.nomdossier }}</a></td></tr>
+     {% endfor %}
 
     </table>
+
 {% endblock content %}
+{% block boitecontent %}
 
-{% block lateral %}
-        <!-- Upload form. Note enctype attribute! -->
+    <h2>Pour ajouter un document au dossier {{ dossiernom }}</h2>
 
-        <form action="" method="post" enctype="multipart/form-data">
-{% csrf_token %}
+    <form action="" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
         <ul>
             {{ form.as_ul }}
         </ul>
-            <p><input type="submit" value="Télécharger"/></p>
-        </form>
-     <hr />
-    <h2><a href="/docs/dossierslist">Créer un nouveau dossier</a> </h2>
+        <input type="hidden" name="pid" value="{{ pid }}" />
+        <p><input type="submit" value="Téléverser"  class="btn-default"/></p>
+    </form>
+{% endblock %}
 
-     <hr />
+{% block lateral %}
+    <h2>Pour ajouter un sous-dossier au dossier {{ dossiernom }}</h2>
+
+    <a href="{% url 'dossier_new' pid %}" class="btn-default" >Créer un sous-dossier </a>
 {% endblock lateral %}

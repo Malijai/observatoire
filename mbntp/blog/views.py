@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response, render, redirect, get_object_or_404
 from django.views import generic
-from .forms import CommentaireForm, EntreeForm, TagForm
+from .forms import CommentaireForm, EntreeForm, TagForm, RechercheForm
 from .models import Entree, Tag
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic.dates import YearArchiveView
@@ -98,6 +98,24 @@ def view_tag(request, slug):
     })
 
 
+def get_recherchetexte(request):
+    form_class = RechercheForm
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+        if form.is_valid():
+            texte = request.POST.get('recherchetexte', '')
+            post_list = Entree.objects.filter(texte_en__icontains=texte)
+            if post_list:
+                tag_list = Tag.objects.all()
+                return render(request, 'blog/list.html', {'posts': post_list, 'tags': tag_list})
+            else:
+                return render(request, 'recherche.html', {'form': form_class, 'message': texte})
+    else:
+        form_class = RechercheForm()
+
+    return render(request, 'recherche.html', {'form': form_class})
+
+
 #Probablement a jeter plus tard
 def test(request):
     return render(request, 'test.html')
@@ -115,3 +133,4 @@ class EntreesYearArchiveView(YearArchiveView):
 #    def get_queryset(self):
 #        return Entree.objects.filter(posted__lte=timezone.now()).order_by('-posted')[:5]
 
+#Entry.objects.get(headline__icontains='Lennon')
