@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+    <head>
+        <title>Observatoire</title>
+        <link rel="stylesheet" href="{% static 'blog/style2.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <div class="date">
+                <a href="{% url 'logout'%}"> Logout</a>
+            </div>
+             <h1>Observatoire en santé mentale & Justice</h1>
+        </div>
+<div class="wrap">
+
+    <h2>Bienvenue bla bla bla</h2>
+
+
+    <h3><a href="{% url 'blogindex' %}" class="btn-default">Accès au blog de l'observatoire</a></h3>
+
+
+    <h3><a href="{% url 'dossier' 1 %}" class="btn-default"> Accès au dépot de fichiers</a></h3>
+
+
+   </body>
+</html>

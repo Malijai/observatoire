@@ -1,0 +1,36 @@
+{% load static %}
+<html>
+    <head>
+        <title>Observatoire Blog</title>
+        <link rel="stylesheet" href="{% static 'blog/style2.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <div class="date">
+                <a href="{% url 'recherche' %}" class="btn-default"> Recherche</a>
+                <a href="{% url 'dossier' 1 %}" class="btn-default">Fichiers </a>
+                <a href="{% url 'logout'%}" class="btn-default"> Logout</a>
+            </div>
+         <h1>Observatoire blog</h1>
+        </div>
+<div class="wrap">
+
+  <div class="left_col">
+      {% block content %}
+      {% endblock %}
+  </div>
+    <div class="right_col">
+       {% block lateral %}
+       {% endblock %}
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footergauche">
+      {% block pagination %}
+      {% endblock %}
+    </div>
+</div>
+
+    </body>
+</html>

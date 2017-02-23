@@ -1,0 +1,40 @@
+{% load static %}
+<html>
+    <head>
+        <title>Observatoire Depot de documents</title>
+        <link rel="stylesheet" href="{% static 'style2.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <div class="date">
+                <a href="{% url 'blogindex' %}" class="btn-default">Blog </a>
+                <a href="{% url 'logout' %}" class="btn-default"> Logout</a>
+            </div>
+         <h1>Observatoire Depot de documents</h1>
+        </div>
+<div class="wrap">
+
+  <div class="left_col">
+      <div class="boitehaut">
+          {% block content %}
+          {% endblock %}
+        </div>
+       <div class="boitebas">
+          {% block boitecontent %}
+          {% endblock %}
+       </div>
+  </div>
+
+  <div class="right_col">
+       {% block lateral %}
+       {% endblock %}
+  </div>
+</div>
+
+<div class="footer">
+      {% block pagination %}
+      {% endblock %}
+</div>
+
+    </body>
+</html>
