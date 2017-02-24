@@ -17,6 +17,7 @@ def pardossier(request, pid):
         if form.is_valid():
             newdoc = Document(docfile=request.FILES['docfile'])
 #            newdoc.dossier = Dossier.objects.get(pk=request.POST['dossier'])
+            newdoc.comment = request.POST.get('comment', '')
             newdoc.dossier = dossiercourant
             newdoc.save()
 
@@ -53,6 +54,7 @@ def dossier_new(request, pid):
         form = DossierForm(request.POST)
         if form.is_valid():
             dossier = form.save(commit=False)
+            #dossier.comment = request.POST.get('comment', '')
             dossier.parentId = parent
             dossier.save()
             return HttpResponseRedirect(reverse('dossier', args=[dossier.id]))

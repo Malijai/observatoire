@@ -2,6 +2,7 @@
 from django import forms
 
 from .models import Document, Dossier
+from django.utils.translation import ugettext as _
 
 #class DocumentForm(forms.Form):
 #    docfile = forms.FileField(
@@ -11,16 +12,18 @@ from .models import Document, Dossier
 class DocumentForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ('docfile',)
-        labels = {'docfile': ('Sélectionner un fichier'),}
+        fields = ('docfile','comment',)
+        labels = {'docfile': _('Selectionner un fichier'),
+                  'comment': _('Description'),}
 #        fields = ('docfile','dossier')
 #        labels = {'docfile': ('Select a file'), 'dossier': ('choisir un dossier'),}
-        help_text = {'docfile': ('max. 42 megabytes'), }
+        help_text = {'docfile': ('max. 10 megabytes'), }
 
 class DossierForm(forms.ModelForm):
     class Meta:
         model = Dossier
-        fields = ('nomdossier',)
-        labels = {'nomdossier': ('Taper le nom du sous-dossier'), }
+        fields = ('nomdossier','comment',)
+        labels = {'nomdossier': _('Nom du sous-dossier'),
+                  'comment': _('Description'),}
 
 
