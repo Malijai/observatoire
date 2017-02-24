@@ -1,7 +1,8 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 
 {% block content %}
-    <h1>nouveau commentaire au billet : {{ Posttitre }}</h1>
+    <h1>{% trans "Nouveau commentaire au billet : " %}{{ Posttitre }}</h1>
 
     <form method="POST" class="Commentaire-form">{% csrf_token %}
         <table>

@@ -1,7 +1,8 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 
 {% block lateral %}
-<h2> Mots clefs</h2>
+<h2>{% trans "Mots clefs" %}</h2>
     <ul>
      {% for tag in tags %}
         <li><a href="{% url 'view_blog_tag' tag.slug %}">{{tag.mot_en}}</a></li>
@@ -20,8 +21,8 @@
              <h2>{{ entree.titre_en }}</h2>
              <p>{{ entree.texte_en|linebreaksbr|truncatewords:10 }} </p>
             <br />
-              <a href="{% url 'blogdetail' entree.id %}">Voir plus / Commenter</a>
-              <h4> Mots clefs</h4>
+              <a href="{% url 'blogdetail' entree.id %}">{% trans "Voir plus / Commenter" %}</a>
+              <h4>{% trans "Mots clefs" %}</h4>
               <p>
               {% for tag in entree.tag.all %}
                   {{tag.mot_en}};
@@ -31,7 +32,7 @@
     {% endfor %}
 
 <div class="liens">
-<a href="{% url 'entree_new' %}" class="btn-default">Ajouter un billet</a>
+<a href="{% url 'entree_new' %}" class="btn-default">{% trans "Ajouter un billet" %}</a>
 
 </div>
 {% endblock content %}
@@ -39,15 +40,15 @@
 {% block pagination %}
     <span class="step-links">
         {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}">précédente</a>
+            <a href="?page={{ posts.previous_page_number }}">{% trans "précédente" %}</a>
         {% endif %}
 
         <span class="current">
-            Page {{ posts.number }} de {{ posts.paginator.num_pages }}
+            Page {{ posts.number }} {% trans "de" %} {{ posts.paginator.num_pages }}
         </span>
 
         {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">suivante</a>
+            <a href="?page={{ posts.next_page_number }}">{% trans "suivante" %}</a>
         {% endif %}
     </span>
 

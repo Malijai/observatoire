@@ -1,24 +1,28 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="post">
     <div class="date">
-         Publié le : {{ object.posted }} par {{object.author.first_name }}, {{object.author.last_name }}
+        <!--{% blocktrans %}-->
+        Publié le : {{ object.posted }} par {{object.author.first_name }}, {{object.author.last_name }}
+        <!--{% endblocktrans %}-->
     </div>
 
     <h2>{{ object.titre_en }}</h2>
      <p>{{ object.texte_en|linebreaksbr }}</p>
 
-    <h3>Commentaires</h3>
+    <h3>{% trans "Commentaires" %}</h3>
        <ul>
         {% for commentaire in object.commentaire_set.all %}
+           <!--{% blocktrans %}-->
            Commenté par : {{commentaire.author.first_name }}, {{commentaire.author.last_name }} le : {{ commentaire.posted }}
-            <li>{{commentaire.texte_en}}</li>
+           <!--{% endblocktrans %}-->
+           <li>{{commentaire.texte_en}}</li>
         {% endfor %}
-
         </ul>
-    <h3> Mots clefs</h3>
+    <h3>{% trans "Mots clefs" %}</h3>
          <p>
           {% for tag in object.tag.all %}
              {{tag.mot_en}};
@@ -26,9 +30,9 @@
            </p>
 </div>
 <div class="liens">
-    <a href="{% url 'commentaire_new' object.id %}" class="btn-default">Commenter ce post </a>
+    <a href="{% url 'commentaire_new' object.id %}" class="btn-default">{% trans "Commenter ce billet" %}</a>
 </div>
 <div class="liens">
-     <a href="{% url 'blogindex' %}">Retour à la liste</a>
+     <a href="{% url 'blogindex' %}">{% trans "Retour à la liste" %}</a>
 </div>
 {% endblock content %}

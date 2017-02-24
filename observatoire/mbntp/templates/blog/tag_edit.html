@@ -1,8 +1,9 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
-    <h2>Nouveau mot clef</h2>
+    <h2>{% trans "Nouveau mot clef" %}</h2>
 
     <form method="POST" class="Tag-form">{% csrf_token %}
         <table>
@@ -15,7 +16,7 @@
 
 
 {% block lateral %}
-<h2>Mots clefs existants</h2>
+<h2>{% trans "Mots clefs existants" %}</h2>
     <ul>
      {% for tag in tags %}
         <li>{{tag.mot_en}}</a></li>

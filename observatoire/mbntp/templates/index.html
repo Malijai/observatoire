@@ -1,0 +1,52 @@
+{% load static %}
+{% load i18n %}
+<html>
+    <head>
+        <title>Observatoire</title>
+        <link rel="stylesheet" href="{% static 'blog/style_b.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <div class="date">
+             <table>
+                <tr><td><a href="{% url 'logout'%}" class="btn-default"> Logout</a></td>
+                    <td>
+                    <form action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ index }}" />
+                    <select name="language" class="entetelangue">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <option value="{{ language.code }}"
+                               {% if language.code == LANGUAGE_CODE %}
+                               selected="selected"
+                               {% endif %}>
+                             {{ language.code }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Go"  class="entetelangue"/>
+                    </form>
+                </td>
+               </tr>
+             </table>
+            </div>
+             <h1>Observatoire en santé mentale & Justice</h1>
+
+        </div>
+<div class="wrap">
+
+    <h2>Bienvenue bla bla bla</h2>
+
+ {% get_current_language as LANGUAGE_CODE %}
+ <p>Language choisi: {{LANGUAGE_CODE}}</p>
+
+    <h3><a href="{% url 'blogindex' %}" class="btn-default">{% trans "Accès au blog de l'observatoire" %}</a></h3>
+
+
+    <h3><a href="{% url 'dossier' 1 %}" class="btn-default">{% trans "Accès au dépot de fichiers" %}</a></h3>
+
+    </body>
+</html>

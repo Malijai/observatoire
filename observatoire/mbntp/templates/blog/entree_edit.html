@@ -1,8 +1,9 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
-    <h2>Nouveau post</h2>
+    <h2>{% trans "Nouveau billet" %}</h2>
 
     <form method="POST" class="Entree-form">{% csrf_token %}
         <table  class="list">
@@ -15,13 +16,13 @@
 
 
 {% block lateral %}
-<h2>Liste des mots clefs disponibles</h2>
+<h2>{% trans "Liste des mots clefs disponibles" %}</h2>
     <ul>
      {% for tag in tags %}
         <li>{{tag.mot_en}}</li>
      {% endfor %}
     </ul>
-<p><em>Si vous désirez ajouter un mot clef, faites le avant d'écrire votre texte</em>
-<br /><p><a href="{% url 'tag_new' %}" class="btn-default">Ajouter un mot clef à la liste</a></p>
+<p><em>{% trans "Si vous désirez ajouter un mot clef, faites le avant d'écrire votre texte" %}</em>
+<br /><p><a href="{% url 'tag_new' %}" class="btn-default">{% trans "Ajouter un mot clef à la liste" %}</a></p>
 <br />
 {% endblock %}

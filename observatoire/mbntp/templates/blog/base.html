@@ -1,19 +1,22 @@
+{% load i18n %}
 {% load static %}
 <html>
     <head>
         <title>Observatoire Blog</title>
-        <link rel="stylesheet" href="{% static 'blog/style2.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/style_b.css' %}">
     </head>
     <body>
         <div class="page-header">
             <div class="date">
-                <a href="{% url 'recherche' %}" class="btn-default"> Recherche</a>
-                <a href="{% url 'dossier' 1 %}" class="btn-default">Fichiers </a>
-                <a href="{% url 'logout'%}" class="btn-default"> Logout</a>
+                <a href="{% url 'recherche' %}" class="btn-default">{% trans "Recherche" %}</a>
+                <a href="{% url 'dossier' 1 %}" class="btn-default">{% trans "Fichiers" %}</a>
+                <a href="{% url 'logout'%}" class="btn-default">Logout</a>
             </div>
          <h1>Observatoire blog</h1>
         </div>
 <div class="wrap">
+     {% get_current_language as LANGUAGE_CODE %}
+ <p>Language choisi: {{LANGUAGE_CODE}}</p>
 
   <div class="left_col">
       {% block content %}

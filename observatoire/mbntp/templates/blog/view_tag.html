@@ -1,8 +1,9 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
-    <h2>Entrées avec le mot clef suivant: {{ tag.mot_en }}</h2>
+    <h2>{% trans "Billets avec le mot clef suivant: " %}{{ tag.mot_en }}</h2>
 
     {% if entrees %}
         <ul>
@@ -11,6 +12,6 @@
         {% endfor %}
         </ul>
     {% else %}
-        <p>There are no posts.</p>
+        <p>{% trans "Il n'y a pas de billet " %}</p>
     {% endif %}
 {% endblock %}

@@ -2,13 +2,11 @@
 from django.shortcuts import render_to_response, render, redirect, get_object_or_404
 from django.views import generic
 from .forms import CommentaireForm, EntreeForm, TagForm, RechercheForm
-from .models import Entree, Tag
+from .models import Entree, Tag, User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic.dates import YearArchiveView
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
-from django.http import Http404, HttpResponseRedirect
-
+from django.core import mail
 
 
 class BlogDetail(generic.DetailView):
@@ -49,6 +47,15 @@ def commentaire_new(request, pk):
             commentaire.entree = Entree.objects.get(pk=pk)
             commentaire.author = request.user
             commentaire.save()
+            sujet = "Nouveau commentaire dans le blog de l'observatoire"
+            textecourriel = u'Un nouveau commentaire au billet intitulé : ' + posttitre + u' vient d\'être publié par '\
+                + commentaire.author.first_name \
+                + ' ' + commentaire.author.last_name
+            with mail.get_connection() as connection:
+                mail.EmailMessage(
+                    sujet, textecourriel, 'de moi', ['malijai.caulet@videotron.ca','malijai.caulet@videotron.ca' ],
+                    connection=connection,
+                ).send()
             return redirect('blogdetail', pk=pk)
     else:
         form = CommentaireForm()
@@ -66,9 +73,16 @@ def entree_new(request):
             entree.author = request.user
             entree.save()
             form.save_m2m()             # form save many to many (ici les tags selectionnes)
-                     # for t in form.data.getlist('tag'):     #2 lignes equivalentes a ligne du dessus
-                     #entree.tag.add(t)
-            #import ipdb; ipdb.set_trace()
+             #import ipdb; ipdb.set_trace()
+            sujet = "Nouveau billet dans le blog de l'observatoire"
+            textecourriel = u'Un nouveau billet intitulé : ' + entree.titre_en + u' vient d\'être publié par '\
+                + entree.author.first_name \
+                + ' ' + entree.author.last_name
+            with mail.get_connection() as connection:
+                mail.EmailMessage(
+                    sujet, textecourriel, 'de moi', ['malijai.caulet@videotron.ca','malijai.caulet@videotron.ca' ],
+                    connection=connection,
+                ).send()
             return redirect('blogdetail', entree.id)
     else:
         form = EntreeForm()
@@ -109,28 +123,15 @@ def get_recherchetexte(request):
                 tag_list = Tag.objects.all()
                 return render(request, 'blog/list.html', {'posts': post_list, 'tags': tag_list})
             else:
-                return render(request, 'recherche.html', {'form': form_class, 'message': texte})
+                return render(request, 'blog/recherche.html', {'form': form_class, 'message': texte})
     else:
         form_class = RechercheForm()
 
-    return render(request, 'recherche.html', {'form': form_class})
+    return render(request, 'blog/recherche.html', {'form': form_class})
 
 
 #Probablement a jeter plus tard
-def test(request):
-    return render(request, 'test.html')
+def index(request):
+    return render(request, 'index.html')
 
 
-class EntreesYearArchiveView(YearArchiveView):
-    queryset = Entree.objects.all()
-    date_field = "posted"
-    make_object_list = True
-    allow_future = True
-
-#class BlogIndex(generic.ListView):
-#    template_name = 'blogindex.html'
-
-#    def get_queryset(self):
-#        return Entree.objects.filter(posted__lte=timezone.now()).order_by('-posted')[:5]
-
-#Entry.objects.get(headline__icontains='Lennon')
