@@ -48,7 +48,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
+
 
 ROOT_URLCONF = 'mbntp.urls'
 
@@ -85,6 +87,16 @@ DATABASES = {
     }
 }
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'observatoirebf',
+#        'USER': 'mydatabaseuser',
+#        'PASSWORD': 'mypassword',
+#        'HOST': 'localhost',
+#        'PORT': '',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -108,9 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LOGIN_REDIRECT_URL = '/blog/test/'
+LOGIN_REDIRECT_URL = '/blog/index/'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
@@ -120,6 +132,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+gettext = lambda x: x
+
+LANGUAGES = (
+   ('fr', gettext('French')),
+   ('en', gettext('English')),
+)
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -127,3 +146,14 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "/home/santemen/public_html/static/"
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'bishop.web-dns1.com'
+#EMAIL_HOST_PASSWORD = 'LRxC38pQKKce'
+#EMAIL_HOST_USER = 'malijai.caulet@santementalejustice.ca'
+#EMAIL_PORT = '465'
+
+#a utiliser pour les tests de courriels
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
