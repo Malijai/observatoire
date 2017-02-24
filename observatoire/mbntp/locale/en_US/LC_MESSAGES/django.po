@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-24 10:06-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: templates/blog/base.html:11
+msgid "Recherche"
+msgstr "Find"
+
+#: templates/blog/base.html:12
+msgid "Fichiers"
+msgstr "Files"
+
+#: templates/blog/blogdetail.html:8
+#, python-format
+msgid "Publié le : %(object.posted)s par %(object.author.first_name)s, "
+"%(object.author.last_name)s\n"
+msgstr "Posted on %(object.posted)s by %(object.author.first_name)s, "
+"%(object.author.last_name)s\n"
+
+#: templates/blog/blogdetail.html:16
+msgid "Commentaires"
+msgstr "Comments"
+
+#: templates/blog/blogdetail.html:19
+#, python-format
+msgid "           Commenté par : %(commentaire.author.first_name)s, "
+"%(commentaire.author.last_name)s le : %(commentaire.posted)s\n"
+msgstr "           Commented by: %(commentaire.author.first_name)s, "
+"%(commentaire.author.last_name)s on the %(commentaire.posted)s\n"
+
+
+#: templates/blog/blogdetail.html:26 templates/blog/list.html:5
+#: templates/blog/list.html:25
+msgid "Mots clefs"
+msgstr "Keywords"
+
+#: templates/blog/blogdetail.html:34
+msgid "Commenter ce billet"
+msgstr "Comment this post"
+
+#: templates/blog/blogdetail.html:37
+msgid "Retour à la liste"
+msgstr "Back to list"
+
+#: templates/blog/commentaire_edit.html:5
+msgid "Nouveau commentaire au billet : "
+msgstr "New comment to the post:"
+
+#: templates/blog/entree_edit.html:6
+msgid "Nouveau billet"
+msgstr "New post"
+
+#: templates/blog/entree_edit.html:19
+msgid "Liste des mots clefs disponibles"
+msgstr "List of existant keywords"
+
+#: templates/blog/entree_edit.html:25
+msgid ""
+"Si vous désirez ajouter un mot clef, faites le avant d'écrire votre texte"
+msgstr ""
+"If you need to add a keyword, do it BEFORE writing your post"
+
+#: templates/blog/entree_edit.html:26
+msgid "Ajouter un mot clef à la liste"
+msgstr "Add a keyword to the list"
+
+#: templates/blog/list.html:24
+msgid "Voir plus / Commenter"
+msgstr "See / Comment"
+
+#: templates/blog/list.html:35
+msgid "Ajouter un billet"
+msgstr "Add a post"
+
+#: templates/blog/list.html:43
+msgid "précédente"
+msgstr "previous"
+
+#: templates/blog/list.html:47
+msgid "de"
+msgstr "of"
+
+#: templates/blog/list.html:51
+msgid "suivante"
+msgstr "next"
+
+#: templates/blog/recherche.html:8
+msgid "Le mot :"
+msgstr "The word"
+
+#: templates/blog/recherche.html:8
+msgid " n'a pas été trouvé dans les textes"
+msgstr "has not be found in the text"
+
+#: templates/blog/recherche.html:16
+msgid "Rechercher"
+msgstr "Find"
+
+#: templates/blog/tag_edit.html:6
+msgid "Nouveau mot clef"
+msgstr "New keyword"
+
+#: templates/blog/tag_edit.html:19
+msgid "Mots clefs existants"
+msgstr "Keywords"
+
+#: templates/blog/view_tag.html:6
+msgid "Billets avec le mot clef suivant: "
+msgstr "Posts with the keyword: "
+
+#: templates/blog/view_tag.html:15
+msgid "Il n'y a pas de billet "
+msgstr "There is no post"
+
+#: templates/docs/dossier.html:25
+msgid "Pour ajouter un document au dossier"
+msgstr "To add a document to the current folder"
+
+#: templates/docs/dossier.html:39
+msgid "Pour ajouter un sous-dossier au dossier"
+msgstr "To add a sub folder to the current folder"
+
+#: templates/docs/dossier.html:43
+msgid "Créer un sous-dossier"
+msgstr "Create a sub folder"
+
+#: templates/docs/dossier_edit.html:5
+msgid "Nouveau sous dossier"
+msgstr "New sub folder"
+
+#: templates/index.html:20
+msgid "Accès au blog de l'observatoire"
+msgstr "Go to the blog"
+
+#: templates/index.html:23
+msgid "Accès au dépot de fichiers"
+msgstr "Go to the file repository"
