@@ -15,6 +15,16 @@ input, select, textarea {
     background-color: #E5E5E5;
 }
 
+.entetelangue {
+    margin: 0;
+    font-size: 1em;
+    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
+    padding: 0px 0px;
+    margin: 0px 0;
+    border: none;
+    border-radius: 0px;
+}
+
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -81,9 +91,9 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter {
 }
 
 .date a, .date a:visited {
-color: white;
-font: bold 1em Arial, sans-serif;
-text-decoration: none;
+    color: white;
+    font: bold 1em Arial, sans-serif;
+    text-decoration: none;
 }
 
 .save {
@@ -165,9 +175,9 @@ font: bold 1em Arial, sans-serif;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #004280;
+  background-color: #436690;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: 3px 6px #999;
 }
 
