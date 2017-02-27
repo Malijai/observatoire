@@ -2,7 +2,7 @@ body  {
     margin: 0;
     font-size: 0.9em;
     font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
-     background-color: white;
+    background-color: white;
 }
 
 p  {
@@ -41,18 +41,27 @@ textarea {
 
 .left_col {
    float:left;
-   width:54%;
+   width:25%;
    min-height: 320px;
+   padding: 0px 0px 0px 10px;
+   border: 2px solid grey;
+   border-radius: 5px;
+   font-size: 10px;
+}
+
+.left_col input {
+    font-size: 10px;
+}
+
+.left_col .btn-gauche{
+    font-size: 15px;
 }
 
 .right_col {
    float:right;
-   width:43%;
-   background-color: #C2DEE7;
-   border: 2px solid grey;
-   border-radius: 5px;
+   width:72%;
+   background-color: #BBC6D0;
    min-height: 320px;
-   padding: 0px 0px 0px 10px;
 }
 
 .boitebas {
@@ -61,6 +70,7 @@ textarea {
    border-radius: 5px;
    padding: 0px 0px 0px 10px;
 }
+
 .boitehaut {
    min-height: 180px;
    border: 2px solid grey;
@@ -176,9 +186,9 @@ font: bold 1em Arial, sans-serif;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #004280;
+  background-color: #436690;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: 3px 6px #999;
 }
 
@@ -206,7 +216,71 @@ table {
 th, td {
     text-align: left;
     padding: 4px;
-     border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
+
+.btn-gauche{
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #436690;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 6px #999;
+}
+
+.btn-gauche:hover {background-color: #23405c}
+
+.btn-gauche:active {
+  background-color: #23405c;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+
+.btn-group .button {
+    background-color: #436690;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;
+}
+
+.btn-group .button:hover {
+    background-color: #3e8e41;
+}
+
+.btn-group .button:active {
+  background-color: #23405c;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+.langue {
+    background-color: #436690;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font: bold 1em Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;
+    border-radius: 50px 10px;
+}

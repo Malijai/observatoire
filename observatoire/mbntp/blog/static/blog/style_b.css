@@ -2,13 +2,16 @@ body  {
     margin: 0;
     font-size: 0.9em;
     font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
-     background-color: white;
 }
 
 p  {
     margin: 0;
     font-size: 0.9em;
     font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
+}
+
+p.espace  {
+    margin: 10;
 }
 
 input, select, textarea {
@@ -34,6 +37,8 @@ input[type=text], select {
     border: 2px solid #ccc;
     border-radius: 4px;
 }
+
+
 
 textarea {
     width: 100%;
@@ -183,10 +188,44 @@ font: bold 1em Arial, sans-serif;
 
 .btn-default:hover {background-color: #23405c}
 
-.btn-default:active {
+.btn-default:active, .btn-group .button:active {
   background-color: #23405c;
   box-shadow: 0 3px #666;
   transform: translateY(4px);
 }
 
+.btn-group .button {
+    background-color: #436690;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font: bold 1em Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;
+}
 
+.btn-group .button:hover {
+    background-color: #3e8e41;
+
+}
+
+.langue {
+    background-color: #436690;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font: bold 1em Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    float: left;
+    border-radius: 50px 10px;
+}

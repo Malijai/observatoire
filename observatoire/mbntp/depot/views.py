@@ -7,7 +7,7 @@ from .models import Document, Dossier
 from .forms import DocumentForm, DossierForm
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def pardossier(request, pid):
     dossiercourant = Dossier.objects.get(pk=pid)
     dossiernom=dossiercourant.nomdossier
@@ -33,13 +33,13 @@ def pardossier(request, pid):
         document.nicename = document.docfile.name.split('/')[-1]
         documents.append(document)
 
-    return render(request, "docs/dossier.html", {'enfants': enfants,
+    return render(request, "depot/dossier.html", {'enfants': enfants,
                                                  'parent': parent,
                                                  'documents': documents,
                                                  'dossiernom': dossiernom,
                                                  'pid': pid,
                                                  'form': form, })
-#    return render(request, "docs/dossier.html", {'enfants': enfants,
+#    return render(request, "depot/dossier.html", {'enfants': enfants,
 #                                                 'parent': parent,
 #                                                 'documents': documents,
 #                                                 'dossiernom': dossiernom,
@@ -47,7 +47,7 @@ def pardossier(request, pid):
 #                                                 'form': form,})
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def dossier_new(request, pid):
     parent = Dossier.objects.get(pk=pid)
     if request.method == "POST":
@@ -60,5 +60,5 @@ def dossier_new(request, pid):
             return HttpResponseRedirect(reverse('dossier', args=[dossier.id]))
     else:
         form = DossierForm()
-    return render(request, "docs/dossier_edit.html", {'form': form,
+    return render(request, "depot/dossier_edit.html", {'form': form,
                                                       'dossier_id': pid})

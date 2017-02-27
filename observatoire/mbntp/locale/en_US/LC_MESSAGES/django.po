@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-24 10:06-0500\n"
+"POT-Creation-Date: 2017-02-27 09:26-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,43 +16,98 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/blog/base.html:11
+#: blog/forms.py:11
+msgid "Votre commentaire"
+msgstr "Comments"
+
+#: blog/forms.py:18
+msgid "Votre texte"
+msgstr "Your text"
+
+#: blog/forms.py:19
+msgid "Votre titre doit etre explicite"
+msgstr "The title as to be clear"
+
+#: blog/forms.py:20
+msgid "Indiquez des mots clefs (Ctrl + Click)"
+msgstr "Choose keywords (Ctrl + Click)"
+
+#: blog/forms.py:26
+msgid "Entrer un mot clef"
+msgstr "New keyword"
+
+#: depot/forms.py:16
+msgid "Selectionner un fichier"
+msgstr "Select a file"
+
+#: depot/forms.py:17 depot/forms.py:25
+msgid "Description"
+msgstr "Description"
+
+#: depot/forms.py:24
+msgid "Nom du sous-dossier"
+msgstr "New sub folder"
+
+#: mbntp/settings.py:138
+msgid "French"
+msgstr "Francais"
+
+#: mbntp/settings.py:139
+msgid "English"
+msgstr "Anglais"
+
+#: templates/blog/base.html:26
 msgid "Recherche"
 msgstr "Find"
 
-#: templates/blog/base.html:12
+#: templates/blog/base.html:27 templates/blog/base_r.html:24
 msgid "Fichiers"
 msgstr "Files"
 
 #: templates/blog/blogdetail.html:8
 #, python-format
-msgid "Publié le : %(object.posted)s par %(object.author.first_name)s, "
-"%(object.author.last_name)s\n"
-msgstr "Posted on %(object.posted)s by %(object.author.first_name)s, "
-"%(object.author.last_name)s\n"
+msgid ""
+"\n"
+"        Publié le : %(date)s par : %(auteurP)s %(auteurN)s\n"
+"        "
+msgstr ""
+"\n"
+"Published on  %(date)s by: %(auteurP)s, %(auteurN)s\n"
+"        "
 
 #: templates/blog/blogdetail.html:16
 msgid "Commentaires"
 msgstr "Comments"
 
 #: templates/blog/blogdetail.html:19
+msgid "Commenté par : "
+msgstr "Commented by "
+
+#: templates/blog/blogdetail.html:20
+msgid " le : "
+msgstr " on: "
+
+#: templates/blog/blogdetail.html:21
 #, python-format
-msgid "           Commenté par : %(commentaire.author.first_name)s, "
-"%(commentaire.author.last_name)s le : %(commentaire.posted)s\n"
-msgstr "           Commented by: %(commentaire.author.first_name)s, "
-"%(commentaire.author.last_name)s on the %(commentaire.posted)s\n"
+msgid ""
+"\n"
+"            Commenté par : %(auteurP)s, %(auteurN)s le %(date)s\n"
+"            "
+msgstr ""
+"\n"
+"Commented by %(auteurP)s, %(auteurN)s on the %(date)s\n"
+"            "
 
-
-#: templates/blog/blogdetail.html:26 templates/blog/list.html:5
+#: templates/blog/blogdetail.html:27 templates/blog/list.html:5
 #: templates/blog/list.html:25
 msgid "Mots clefs"
 msgstr "Keywords"
 
-#: templates/blog/blogdetail.html:34
+#: templates/blog/blogdetail.html:35
 msgid "Commenter ce billet"
 msgstr "Comment this post"
 
-#: templates/blog/blogdetail.html:37
+#: templates/blog/blogdetail.html:38
 msgid "Retour à la liste"
 msgstr "Back to list"
 
@@ -67,13 +121,12 @@ msgstr "New post"
 
 #: templates/blog/entree_edit.html:19
 msgid "Liste des mots clefs disponibles"
-msgstr "List of existant keywords"
+msgstr "List of keywords"
 
 #: templates/blog/entree_edit.html:25
 msgid ""
-"Si vous désirez ajouter un mot clef, faites le avant d'écrire votre texte"
-msgstr ""
-"If you need to add a keyword, do it BEFORE writing your post"
+"Si vous désirez ajouter un mot clef, faites le AVANT d'écrire votre texte"
+msgstr "If you need to add a keyword, do it BEFORE writing your post"
 
 #: templates/blog/entree_edit.html:26
 msgid "Ajouter un mot clef à la liste"
@@ -99,13 +152,17 @@ msgstr "of"
 msgid "suivante"
 msgstr "next"
 
+#: templates/blog/recherche.html:6
+msgid "Recherche de terme (ou de portion de mot) dans les textes du blog"
+msgstr "Find word (or part of word) in the blog texts"
+
 #: templates/blog/recherche.html:8
-msgid "Le mot :"
-msgstr "The word"
+msgid "Le terme :"
+msgstr "The word: "
 
 #: templates/blog/recherche.html:8
 msgid " n'a pas été trouvé dans les textes"
-msgstr "has not be found in the text"
+msgstr " has not be found in the texts"
 
 #: templates/blog/recherche.html:16
 msgid "Rechercher"
@@ -120,33 +177,64 @@ msgid "Mots clefs existants"
 msgstr "Keywords"
 
 #: templates/blog/view_tag.html:6
-msgid "Billets avec le mot clef suivant: "
+msgid "Billets avec le mot clef suivant : "
 msgstr "Posts with the keyword: "
 
 #: templates/blog/view_tag.html:15
 msgid "Il n'y a pas de billet "
-msgstr "There is no post"
+msgstr "There is no post "
 
-#: templates/docs/dossier.html:25
-msgid "Pour ajouter un document au dossier"
-msgstr "To add a document to the current folder"
+#: templates/depot/base_d.html:29
+msgid "Observatoire Depot de documents"
+msgstr "File repository"
 
-#: templates/docs/dossier.html:39
+#: templates/depot/base_d1.html:29
+msgid "Depot de documents"
+msgstr "File repository"
+
+#: templates/depot/dossier.html:27
 msgid "Pour ajouter un sous-dossier au dossier"
-msgstr "To add a sub folder to the current folder"
+msgstr "To add a sub folder to the current folder "
 
-#: templates/docs/dossier.html:43
+#: templates/depot/dossier.html:31
 msgid "Créer un sous-dossier"
 msgstr "Create a sub folder"
 
-#: templates/docs/dossier_edit.html:5
+#: templates/depot/dossier.html:36
+msgid "Pour ajouter un document au dossier"
+msgstr "To add a document to the current folder "
+
+#: templates/depot/dossier.html:42
+msgid "Téléverser"
+msgstr "Upload"
+
+#: templates/depot/dossier_edit.html:5
 msgid "Nouveau sous dossier"
 msgstr "New sub folder"
 
-#: templates/index.html:20
+#: templates/index.html:37
 msgid "Accès au blog de l'observatoire"
 msgstr "Go to the blog"
 
-#: templates/index.html:23
+#: templates/index.html:40
 msgid "Accès au dépot de fichiers"
 msgstr "Go to the file repository"
+
+#: templates/registration/logged_out.html:7
+msgid "Délogué!"
+msgstr "Logged out!"
+
+#: templates/registration/logged_out.html:9
+msgid "Se reloguer"
+msgstr "Click here to login again"
+
+#: templates/registration/login.html:7
+msgid "Votre nom et mot de passe ne correspondent pas. Réessayez"
+msgstr "Your username and password didn't match. Please try again."
+
+#: templates/registration/login.html:39
+msgid "Mot de passe perdu?"
+msgstr "Lost password?"
+
+#~ msgid "Le mot :"
+#~ msgstr "The word "

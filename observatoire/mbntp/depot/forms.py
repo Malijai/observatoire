@@ -2,7 +2,7 @@
 from django import forms
 
 from .models import Document, Dossier
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 #class DocumentForm(forms.Form):
 #    docfile = forms.FileField(
@@ -15,8 +15,6 @@ class DocumentForm(forms.ModelForm):
         fields = ('docfile','comment',)
         labels = {'docfile': _('Selectionner un fichier'),
                   'comment': _('Description'),}
-#        fields = ('docfile','dossier')
-#        labels = {'docfile': ('Select a file'), 'dossier': ('choisir un dossier'),}
         help_text = {'docfile': ('max. 10 megabytes'), }
 
 class DossierForm(forms.ModelForm):

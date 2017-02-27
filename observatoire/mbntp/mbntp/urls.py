@@ -24,10 +24,11 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
-    url('^accounts/', include('django.contrib.auth.urls')),
+#    url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls',)),
-    url(r'^docs/', include('depot.urls', )),
+    url(r'^depot/', include('depot.urls', )),
+    url('^/?$', include('accueil.urls', )),
     url('^', include('django.contrib.auth.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -2,13 +2,13 @@
 from django import forms
 
 from .models import Commentaire, Entree, Tag
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 class CommentaireForm(forms.ModelForm):
      class Meta:
         model = Commentaire
         fields = ('texte_en', )
-        labels = {'texte_en': ('Votre commentaire'), }
+        labels = {'texte_en': _('Votre commentaire'), }
 
 
 class EntreeForm(forms.ModelForm):

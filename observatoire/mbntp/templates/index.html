@@ -8,30 +8,21 @@
     <body>
         <div class="page-header">
             <div class="date">
-             <table>
-                <tr><td><a href="{% url 'logout'%}" class="btn-default"> Logout</a></td>
-                    <td>
+                <div class="btn-group">
                     <form action="{% url 'set_language' %}" method="post">
-                    {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ index }}" />
-                    <select name="language" class="entetelangue">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ index }}" />
                         {% get_current_language as LANGUAGE_CODE %}
                         {% get_available_languages as LANGUAGES %}
                         {% get_language_info_list for LANGUAGES as languages %}
                         {% for language in languages %}
-                            <option value="{{ language.code }}"
-                               {% if language.code == LANGUAGE_CODE %}
-                               selected="selected"
-                               {% endif %}>
-                             {{ language.code }}
-                            </option>
+                            {% if language.code != LANGUAGE_CODE %}
+                                <input type="submit" class="langue" name="language" value="{{ language.code }}" />
+                            {% endif %}
                         {% endfor %}
-                    </select>
-                    <input type="submit" value="Go"  class="entetelangue"/>
+                        <a href="{% url 'logout' %}" class="button"> Logout</a>
                     </form>
-                </td>
-               </tr>
-             </table>
+                 </div>
             </div>
              <h1>Observatoire en santé mentale & Justice</h1>
 

@@ -1,4 +1,4 @@
-{% extends 'docs/base_d.html' %}
+{% extends 'depot/base_d.html' %}
 {% load i18n %}
 
 {% block content %}
@@ -21,18 +21,6 @@
     </table>
 
 {% endblock content %}
-{% block boitecontent %}
-    <h4>{% trans "Pour ajouter un document au dossier" %}{{ dossiernom }}</h4>
-
-    <form action="" method="post" enctype="multipart/form-data">
-
-        {% csrf_token %}
-         {{ form }}
-        <input type="hidden" name="pid" value="{{ pid }}" />
-        <p><input type="submit" value="Téléverser"  class="btn-gauche"/></p>
-    </form>
-
-{% endblock %}
 
 {% block lateral %}
 
@@ -43,3 +31,17 @@
     <p><a href="{% url 'dossier_new' pid %}" class="btn-gauche" >{% trans "Créer un sous-dossier" %}</a></p>
 
 {% endblock lateral %}
+
+{% block boitecontent %}
+    <h4>{% trans "Pour ajouter un document au dossier" %}{{ dossiernom }}</h4>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="pid" value="{{ pid }}" />
+        <p><input type="submit" value={% trans "Téléverser" %}  class="btn-gauche"/></p>
+    </form>
+
+{% endblock %}
+
+

@@ -5,9 +5,9 @@
 
 <div class="post">
     <div class="date">
-        <!--{% blocktrans %}-->
-        Publié le : {{ object.posted }} par {{object.author.first_name }}, {{object.author.last_name }}
-        <!--{% endblocktrans %}-->
+        {% blocktrans with date=object.posted  auteurP=object.author.first_name auteurN=object.author.last_name %}
+        Publié le : {{ date }} par : {{auteurP }} {{auteurN }}
+        {% endblocktrans %}
     </div>
 
     <h2>{{ object.titre_en }}</h2>
@@ -16,9 +16,11 @@
     <h3>{% trans "Commentaires" %}</h3>
        <ul>
         {% for commentaire in object.commentaire_set.all %}
-           <!--{% blocktrans %}-->
-           Commenté par : {{commentaire.author.first_name }}, {{commentaire.author.last_name }} le : {{ commentaire.posted }}
-           <!--{% endblocktrans %}-->
+           {% trans "Commenté par : " as auteur %}
+            {% trans " le : " as le %}
+            {% blocktrans with date=commentaire.posted  auteurP=commentaire.author.first_name auteurN=commentaire.author.last_name %}
+            Commenté par : {{auteurP }}, {{auteurN }} le {{ date }}
+            {% endblocktrans %}
            <li>{{commentaire.texte_en}}</li>
         {% endfor %}
         </ul>

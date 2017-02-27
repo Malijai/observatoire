@@ -14,7 +14,7 @@ class BlogDetail(generic.DetailView):
     model = Entree
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def listing(request):
 #    if request.user.is_authenticated:
         post_list = Entree.objects.all()
@@ -36,7 +36,7 @@ def listing(request):
 #	return HttpResponseRedirect('/admin/login/')
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def commentaire_new(request, pk):
     billetacommenter = Entree.objects.get(pk=pk)
     posttitre=billetacommenter.titre_en
@@ -63,7 +63,7 @@ def commentaire_new(request, pk):
                                                         'post_id': pk,
                                                         'Posttitre':  posttitre})
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def entree_new(request):
     tag_list = Tag.objects.all()
     if request.method == "POST":
@@ -89,7 +89,7 @@ def entree_new(request):
     return render(request, "blog/entree_edit.html", {'form': form, 'tags':tag_list})
 
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def tag_new(request):
     tag_list = Tag.objects.all()
     if request.method == "POST":
@@ -103,7 +103,7 @@ def tag_new(request):
         form = TagForm()
     return render(request, "blog/tag_edit.html", {'form': form, 'tags': tag_list })
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/login/')
 def view_tag(request, slug):
     tag = get_object_or_404(Tag, slug=slug)
     return render_to_response('blog/view_tag.html', {
@@ -112,6 +112,7 @@ def view_tag(request, slug):
     })
 
 
+@login_required(login_url='/login/')
 def get_recherchetexte(request):
     form_class = RechercheForm
     if request.method == 'POST':
