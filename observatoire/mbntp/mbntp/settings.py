@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'depot'
+    'depot',
+    'accueil'
 ]
 
 MIDDLEWARE = [
@@ -76,7 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mbntp.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -90,9 +90,9 @@ DATABASES = {
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'observatoirebf',
-#        'USER': 'mydatabaseuser',
-#        'PASSWORD': 'mypassword',
+#        'NAME': 'santemen_obsdjango',
+#        'USER': 'santemen_malijai',
+#        'PASSWORD': 'LRxC38pQKKce',
 #        'HOST': 'localhost',
 #        'PORT': '',
 #    }
@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LOGIN_REDIRECT_URL = '/blog/index/'
+LOGIN_REDIRECT_URL = '/index/'
 
 LANGUAGE_CODE = 'fr-fr'
 

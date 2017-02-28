@@ -7,7 +7,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
 from django.core import mail
-
+from django.utils.translation import ugettext_lazy as _
+from django.db.models import Q
 
 class BlogDetail(generic.DetailView):
     template_name = 'blog/blogdetail.html'
@@ -47,13 +48,21 @@ def commentaire_new(request, pk):
             commentaire.entree = Entree.objects.get(pk=pk)
             commentaire.author = request.user
             commentaire.save()
+            lienpost = posttitre + ' ( http://santementalejustice.ca/mbntp/blog/' + str(billetacommenter.id) + '/ )'
             sujet = "Nouveau commentaire dans le blog de l'observatoire"
-            textecourriel = u'Un nouveau commentaire au billet intitulé : ' + posttitre + u' vient d\'être publié par '\
-                + commentaire.author.first_name \
-                + ' ' + commentaire.author.last_name
+            textecourriel = _(u"""Un nouveau commentaire au billet intitulé : {} vient d'être publié par {} {}.
+
+Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
+Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.
+Merci de participer à ce projet.
+
+Malijaï
+""").format(lienpost, commentaire.author.first_name, commentaire.author.last_name )
+            courriels = [user.email for user in User.objects.exclude(Q(email__isnull=True) | Q(email=u''))]
+
             with mail.get_connection() as connection:
                 mail.EmailMessage(
-                    sujet, textecourriel, 'de moi', ['malijai.caulet@videotron.ca','malijai.caulet@videotron.ca' ],
+                    sujet, textecourriel, 'malijai.caulet.ippm@ssss.gouv.qc.ca', courriels,
                     connection=connection,
                 ).send()
             return redirect('blogdetail', pk=pk)
@@ -74,15 +83,23 @@ def entree_new(request):
             entree.save()
             form.save_m2m()             # form save many to many (ici les tags selectionnes)
              #import ipdb; ipdb.set_trace()
+            lienpost = entree.titre_en + ' ( http://santementalejustice.ca/mbntp/blog/' + str(entree.id) + '/ )'
             sujet = "Nouveau billet dans le blog de l'observatoire"
-            textecourriel = u'Un nouveau billet intitulé : ' + entree.titre_en + u' vient d\'être publié par '\
-                + entree.author.first_name \
-                + ' ' + entree.author.last_name
-            with mail.get_connection() as connection:
-                mail.EmailMessage(
-                    sujet, textecourriel, 'de moi', ['malijai.caulet@videotron.ca','malijai.caulet@videotron.ca' ],
-                    connection=connection,
-                ).send()
+            textecourriel = u'Un nouveau billet intitulé : ' + lienpost + u' vient d\'être publié par '\
+                + entree.author.first_name + ' ' + entree.author.last_name\
+                + u'\n\nVous recevez ce courriel parce que vous ête membre de l\'Observatoire en santé mentale et justice du Québec.\n'\
+                + u'Ne répondez pas à ce courriel il s\'agit d\'un envoi automatisé\n'\
+                + u'Merci de participer à ce projet\n\n'\
+                + u'Malijaï'
+#            courriels = []
+            for user in User.objects.all():
+                if user.email:
+#                    courriels.append(user.email)
+                    with mail.get_connection() as connection:
+                        mail.EmailMessage(
+                            sujet, textecourriel, 'malijai.caulet.ippm@ssss.gouv.qc.ca', [user.email],
+                            connection=connection,
+                        ).send()
             return redirect('blogdetail', entree.id)
     else:
         form = EntreeForm()
