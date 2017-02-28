@@ -31,11 +31,7 @@ def listing(request):
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of results.
             posts = paginator.page(paginator.num_pages)
-
         return render(request, 'blog/list.html', {'posts': posts, 'tags':tag_list})
-#    else:
-   #Do something for anonymous users.
-#	return HttpResponseRedirect('/admin/mbntp/login/')
 
 
 @login_required(login_url=settings.LOGIN_URI)
@@ -50,14 +46,13 @@ def commentaire_new(request, pk):
             commentaire.author = request.user
             commentaire.save()
             lienpost = posttitre + ' ( http://santementalejustice.ca/mbntp/blog/' + str(billetacommenter.id) + '/ )'
-            sujet = "Nouveau commentaire dans le blog de l'observatoire"
+            sujet = _(u"Nouveau commentaire dans le blog de l'observatoire")
             textecourriel = _(u"""Un nouveau commentaire au billet intitulé : {} vient d'être publié par {} {}.
-
 Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
 Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.
 Merci de participer à ce projet.
 
-Malijaï
+Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)
 """).format(lienpost, commentaire.author.first_name, commentaire.author.last_name )
             courriels = [user.email for user in User.objects.exclude(Q(email__isnull=True) | Q(email=u''))]
 
@@ -85,22 +80,20 @@ def entree_new(request):
             form.save_m2m()             # form save many to many (ici les tags selectionnes)
              #import ipdb; ipdb.set_trace()
             lienpost = entree.titre_en + ' ( http://santementalejustice.ca/mbntp/blog/' + str(entree.id) + '/ )'
-            sujet = "Nouveau billet dans le blog de l'observatoire"
-            textecourriel = u'Un nouveau billet intitulé : ' + lienpost + u' vient d\'être publié par '\
-                + entree.author.first_name + ' ' + entree.author.last_name\
-                + u'\n\nVous recevez ce courriel parce que vous ête membre de l\'Observatoire en santé mentale et justice du Québec.\n'\
-                + u'Ne répondez pas à ce courriel il s\'agit d\'un envoi automatisé\n'\
-                + u'Merci de participer à ce projet\n\n'\
-                + u'Malijaï'
-#            courriels = []
-            for user in User.objects.all():
-                if user.email:
-#                    courriels.append(user.email)
-                    with mail.get_connection() as connection:
-                        mail.EmailMessage(
-                            sujet, textecourriel, 'malijai.caulet.ippm@ssss.gouv.qc.ca', [user.email],
-                            connection=connection,
-                        ).send()
+            sujet = _(u"Nouveau billet dans le blog de l'observatoire")
+            textecourriel = _(u"""Un nouveau billet intitulé : {} vient d'être publié par {} {}.
+Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
+Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.
+Merci de participer à ce projet.
+
+Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)
+""").format(lienpost, entree.author.first_name, entree.author.last_name)
+            courriels = [user.email for user in User.objects.exclude(Q(email__isnull=True) | Q(email=u''))]
+            with mail.get_connection() as connection:
+                mail.EmailMessage(
+                    sujet, textecourriel, 'malijai.caulet.ippm@ssss.gouv.qc.ca', courriels,
+                    connection=connection,
+                ).send()
             return redirect('blogdetail', entree.id)
     else:
         form = EntreeForm()

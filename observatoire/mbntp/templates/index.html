@@ -29,14 +29,14 @@
         </div>
 <div class="wrap">
 
-    <h2>Bienvenue bla bla bla</h2>
-
- {% get_current_language as LANGUAGE_CODE %}
- <p>Language choisi: {{LANGUAGE_CODE}}</p>
-
+    <h2>{% trans "Bienvenue sur le site privé de l'observatoire" %}</h2>
+    <p>{% blocktrans %}
+        Vous devez être inscrit pour accéder au blog et au dépot de documents.</p>
+        <p>Si vous désirez participer à cet observatoire veuillez en faire la demande par courriel en suivant ce lien :
+        <a href="mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp.gagnon.ippm@ssss.gouv.qc.ca&subject=Inscription%20pour%20observatoire">
+            Demande d'inscription à l'observatoire santé mentale justice du Québec</a></p>
+    {% endblocktrans %}
     <h3><a href="{% url 'blogindex' %}" class="btn-default">{% trans "Accès au blog de l'observatoire" %}</a></h3>
-
-
     <h3><a href="{% url 'dossier' 1 %}" class="btn-default">{% trans "Accès au dépot de fichiers" %}</a></h3>
 
     </body>
