@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Document, Dossier
 from .forms import DocumentForm, DossierForm
+from django.conf import settings
 
-
-@login_required(login_url='/login/')
+@login_required(login_url=settings.LOGIN_URI)
 def pardossier(request, pid):
     dossiercourant = Dossier.objects.get(pk=pid)
     dossiernom=dossiercourant.nomdossier
@@ -47,7 +47,7 @@ def pardossier(request, pid):
 #                                                 'form': form,})
 
 
-@login_required(login_url='/login/')
+@login_required(login_url=settings.LOGIN_URI)
 def dossier_new(request, pid):
     parent = Dossier.objects.get(pk=pid)
     if request.method == "POST":
