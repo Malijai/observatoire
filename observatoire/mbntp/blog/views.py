@@ -141,9 +141,8 @@ def get_recherchetexte(request):
 
     return render(request, 'blog/recherche.html', {'form': form_class})
 
+#def index(request):
+#    return render(request, 'index.html')
 
-#Probablement a jeter plus tard
 def index(request):
-    return render(request, 'index.html')
-
-
+    return render(request, 'logout.html')
