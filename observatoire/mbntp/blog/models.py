@@ -31,6 +31,9 @@ class Entree(models.Model):
     posted = models.DateTimeField(db_index=True, auto_now_add=True)
     tag = models.ManyToManyField(Tag)
 
+    class Meta:
+       ordering = ['-posted']
+
     def __str__(self):
         return '%s' % self.titre_en
 

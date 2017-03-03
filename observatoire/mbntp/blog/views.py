@@ -119,7 +119,7 @@ def view_tag(request, slug):
     tag = get_object_or_404(Tag, slug=slug)
     return render_to_response('blog/view_tag.html', {
         'tag': tag,
-        'entrees': Entree.objects.filter(tag=tag)[:10]
+        'entrees': Entree.objects.filter(tag=tag)   #[:10]
     })
 
 
