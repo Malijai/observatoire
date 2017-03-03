@@ -4,5 +4,6 @@ from . import views
 from .views import indexMB
 
 urlpatterns = [
-    url(r'^debut/$', indexMB, name='indexMB'),
+    #url(r'^debut/$', indexMB, name='indexMB'),
+    url(r'^', indexMB, name='indexMB'),
 ]
