@@ -3,12 +3,11 @@
 
 {% block lateral %}
 <h2>{% trans "Mots clefs" %}</h2>
-    <ul>
+<p>
      {% for tag in tags %}
-        <li><a href="{% url 'view_blog_tag' tag.slug %}">{{tag.mot_en}}</a></li>
+        <a href="{% url 'view_blog_tag' tag.slug %}">{{tag.mot_en}}</a><br />
      {% endfor %}
-    </ul>
-
+</p>
 {% endblock lateral %}
 
 {% block content %}
@@ -31,25 +30,30 @@
         </div>
     {% endfor %}
 
-<div class="liens">
-<a href="{% url 'entree_new' %}" class="btn-default">{% trans "Ajouter un billet" %}</a>
-
-</div>
 {% endblock content %}
 
 {% block pagination %}
-    <span class="step-links">
-        {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}">{% trans "précédente" %}</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ posts.number }} {% trans "de" %} {{ posts.paginator.num_pages }}
-        </span>
-
-        {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">{% trans "suivante" %}</a>
-        {% endif %}
-    </span>
+<div class="pagination">
+{% if posts.has_other_pages %}
+    {% if posts.has_previous %}
+      <a href="?page={{ posts.previous_page_number }}">&laquo;</a>
+    {% else %}
+       <a href="#" >&laquo;</a>
+    {% endif %}
+    {% for i in posts.paginator.page_range %}
+      {% if posts.number == i %}
+       <a href="#" class="active"(current)>{{ i }}</a>
+      {% else %}
+        <a href="?page={{ i }}">{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if posts.has_next %}
+      <a href="?page={{ posts.next_page_number }}">&raquo;</a>
+    {% else %}
+       <a href="#" >&raquo;</a>
+    {% endif %}
+{% endif %}
+</div>
 
 {% endblock pagination %}

@@ -19,9 +19,8 @@
            {% trans "Commenté par : " as auteur %}
             {% trans " le : " as le %}
             {% blocktrans with date=commentaire.posted  auteurP=commentaire.author.first_name auteurN=commentaire.author.last_name %}
-            Commenté par : {{auteurP }}, {{auteurN }} le {{ date }}
+            <li>{{commentaire.texte_en}}. Par {{auteurP }} {{auteurN }} le {{ date }}</li>
             {% endblocktrans %}
-           <li>{{commentaire.texte_en}}</li>
         {% endfor %}
         </ul>
     <h3>{% trans "Mots clefs" %}</h3>

@@ -17,11 +17,11 @@
 
 {% block lateral %}
 <h2>{% trans "Liste des mots clefs disponibles" %}</h2>
-    <ul>
+   <p>
      {% for tag in tags %}
-        <li>{{tag.mot_en}}</li>
+        {{tag.mot_en}} <br />
      {% endfor %}
-    </ul>
+    </p>
 <p><em>{% trans "Si vous désirez ajouter un mot clef, faites le avant d'écrire votre texte" %}</em>
 <br /><p><a href="{% url 'tag_new' %}" class="btn-default">{% trans "Ajouter un mot clef à la liste" %}</a></p>
 <br />

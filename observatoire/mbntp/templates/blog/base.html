@@ -10,9 +10,7 @@
             <div class="date">
                 <div class="btn-group">
  <!--                   <form action="{% url 'set_language' %}" method="post">
-
                         {% csrf_token %}
-
                         <input name="next" type="hidden" value="{{ index }}" />
                         {% get_current_language as LANGUAGE_CODE %}
                         {% get_available_languages as LANGUAGES %}
@@ -23,7 +21,9 @@
                             {% endif %}
                         {% endfor %}
 -->
+                        <a href="{% url 'entree_new' %}" class="button">{% trans "Ajouter un billet" %}</a>
                         <a href="{% url 'recherche' %}" class="button">{% trans "Recherche" %}</a>
+                        <a href="{% url 'blogindex' %}" class="button">Blog </a>
                         <a href="{% url 'dossier' 1 %}" class="button">{% trans "Fichiers" %}</a>
                         <a href="{% url 'logout' %}" class="button"> Logout</a>
                     <!--</form>-->
