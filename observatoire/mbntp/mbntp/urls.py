@@ -19,17 +19,17 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 
-
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
-#    url('^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls',)),
     url(r'^depot/', include('depot.urls', )),
-    url('^/?', include('accueil.urls', )),
-    url('^mb/?', include('indexmb.urls', )),
-    url('^', include('django.contrib.auth.urls')),
+    url(r'^manb/?', include('indexmb.urls')),
+    url(r'^/?', include('accueil.urls', )),
+    url(r'^', include('django.contrib.auth.urls')),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

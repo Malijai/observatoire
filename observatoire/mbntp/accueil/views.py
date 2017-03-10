@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 def isManitoba(http_host):
     return True if 'ntpmb.ca' in http_host else False
+    #return True
 
 
 def accueil(request):
@@ -12,3 +13,4 @@ def accueil(request):
         return render(request,'registration/logged_out.html')
     else:
         return render(request, "index.html")
+
