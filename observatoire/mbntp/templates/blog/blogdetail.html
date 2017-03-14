@@ -33,7 +33,9 @@
 <div class="liens">
     <a href="{% url 'commentaire_new' object.id %}" class="btn-default">{% trans "Commenter ce billet" %}</a>
 </div>
-<div class="liens">
-     <a href="{% url 'blogindex' %}">{% trans "Retour à la liste" %}</a>
-</div>
+
 {% endblock content %}
+
+{% block pagination %}
+    <a href="{% url 'blogindex' %}">{% trans "Retour à la liste" %}</a>
+{% endblock pagination %}

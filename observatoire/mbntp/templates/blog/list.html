@@ -18,9 +18,10 @@
             {{entree.author.first_name }}, {{entree.author.last_name }} - {{ entree.posted }}
         </div>
              <h2>{{ entree.titre_en }}</h2>
-             <p>{{ entree.texte_en|linebreaksbr|truncatewords:10 }} </p>
+             <p>{{ entree.texte_en|linebreaksbr|truncatewords:10 }}
             <br />
               <a href="{% url 'blogdetail' entree.id %}">{% trans "Voir plus / Commenter" %}</a>
+            </p>
               <h4>{% trans "Mots clefs" %}</h4>
               <p>
               {% for tag in entree.tag.all %}

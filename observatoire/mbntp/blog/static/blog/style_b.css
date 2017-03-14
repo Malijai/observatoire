@@ -1,13 +1,22 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(Junction-regular.otf);
+}
+
+html{height: 100%;}
+
 body  {
     margin: 0;
-    font-size: 0.9em;
-    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
+    font-size: 1em;
+    font-family: myFirstFont;
+    background: url(aa95db5513_INV4.jpg) no-repeat center fixed;
+    background-size: cover;height: 95%;
 }
 
 p  {
     margin: 0;
     font-size: 0.9em;
-    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
+    font-family: myFirstFont;
 }
 
 p.espace  {
@@ -16,12 +25,12 @@ p.espace  {
 
 input, select, textarea {
     background-color: #E5E5E5;
+    font-family: myFirstFont;
 }
 
 .entetelangue {
     margin: 0;
     font-size: 1em;
-    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
     padding: 0px 0px;
     margin: 0px 0;
     border: none;
@@ -36,6 +45,7 @@ input[type=text], select {
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
+    font-family: myFirstFont;
 }
 
 textarea {
@@ -50,6 +60,7 @@ textarea {
 .wrap {
    width:90%;
    margin:0 auto;
+   min-height: 90%;
 }
 
 .left_col {
@@ -64,7 +75,8 @@ textarea {
 }
 
 .page-header {
-    background-color: #1B3784;
+    opacity: 0.8;
+    background-color: #1D3320;
     margin-top: 0;
     padding: 10px 10px 10px 40px;
     margin-bottom: 10px;
@@ -77,7 +89,6 @@ textarea {
 }
 
 h1, h2, h3, h4 {
-    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
     margin-bottom: 3px;
 }
 
@@ -92,7 +103,7 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter {
 
 .date a, .date a:visited {
     color: white;
-    font: bold 1em Arial, sans-serif;
+    font: bold 1em ;
     text-decoration: none;
 }
 
@@ -112,6 +123,7 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter {
 }
 
 .post {
+    opacity: 0.9;
     margin-bottom: 5px;
     border: 2px solid grey;
     border-radius: 10px 25px;
@@ -124,19 +136,20 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter {
 }
 
 .liens {
+    opacity: 0.9;
     clear: both;
     background-color: #BFBFBF;
     color: #FFFF00;
     text-align: center;
     padding: 15px;
-    border: 2px solid #1B3784;
+    border: 2px solid #1D3320;
     border-radius: 5px;
     margin-bottom: 5px;
 }
 
 .liens a, .liens a:visited {
-color: #FFFFFF;
-font: bold 1em Arial, sans-serif;
+    color: #FFFFFF;
+    font: bold 1em Arial, sans-serif;
 }
 
 .right_col h2{
@@ -144,12 +157,16 @@ font: bold 1em Arial, sans-serif;
 }
 
 .footer {
+    opacity: 0.9;
     clear: both;
-    background-color: #47557B;
+    background-color: #1D3320;
     color: white;
     padding: 15px 70px;
     text-align: center;
-    font: bold 1em Arial, sans-serif;
+    font: bold 1em;
+    position: relative;
+	margin-top: -50px; /* negative value of footer height */
+	height: 50px;
 }
 
 .footergauche {
@@ -158,39 +175,40 @@ font: bold 1em Arial, sans-serif;
 
 .footer a,.footer a:visited {
     color: #FFFFFF;
-    font: bold 1em Arial, sans-serif;
+    font: bold 1em ;
 }
 
 .step-links a,.step-links a:visited {
     color: #FFFFFF;
-    font: bold 1em Arial, sans-serif;
+    font: bold 1em ;
 }
 
 .btn-default{
   display: inline-block;
   padding: 10px 25px;
+  font-weight: bold;
   font-size: 20px;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #436690;
+  background-color: #347793;
   border: none;
   border-radius: 5px;
-  box-shadow: 3px 6px #999;
+  box-shadow: 3px 6px #677C7D;
 }
 
-.btn-default:hover {background-color: #23405c}
+.btn-default:hover {background-color: #2B4D59}
 
 .btn-default:active, .btn-group .button:active {
-  background-color: #23405c;
-  box-shadow: 0 3px #666;
+  background-color: #2B4D59;
+  box-shadow: 0 3px #677C7D;
   transform: translateY(4px);
 }
 
 .btn-group .button {
-    background-color: #436690;
+    background-color: #347793;
     border: none;
     color: white;
     padding: 10px 25px;
@@ -198,19 +216,18 @@ font: bold 1em Arial, sans-serif;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font: bold 1em Arial, sans-serif;
+    font-weight: bold;
     font-size: 15px;
     cursor: pointer;
     float: left;
 }
 
 .btn-group .button:hover {
-    background-color: #3e8e41;
-
+    background-color: #4CBDE0;
 }
 
 .langue {
-    background-color: #436690;
+    background-color: #347793;
     border: none;
     color: white;
     padding: 10px 25px;
@@ -218,7 +235,8 @@ font: bold 1em Arial, sans-serif;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font: bold 1em Arial, sans-serif;
+    font-family: myFirstFont;
+    font-weight: bold;
     font-size: 15px;
     cursor: pointer;
     float: left;

@@ -28,7 +28,7 @@
 
         </div>
 <div class="wrap">
-    <p>Nom ICI {{ user.first_name }} {{ user.last_name }}
+    <p>Nom {{ user.first_name }} {{ user.last_name }}
     {% for group in user.groups.all %}
     {{ group.name }} - {{ group.id }}
     </p>

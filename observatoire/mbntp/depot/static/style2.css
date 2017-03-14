@@ -1,18 +1,33 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(Junction-regular.otf);
+}
+
+html, body {height: 100%;}
+
 body  {
     margin: 0;
-    font-size: 0.9em;
-    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
-    background-color: white;
+    font-size: 1em;
+    font-family: myFirstFont;
+    background: url(images/aa95db5513_INV4.jpg) no-repeat center fixed;
+    background-size: cover;
 }
 
 p  {
     margin: 0;
     font-size: 0.9em;
-    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
+
 }
 
 input, select, textarea {
     background-color: #E5E5E5;
+
+    font-size: 14px;
+    font-family: myFirstFont;
+}
+
+select, textarea {
+    opacity: 0.8;
 }
 
 input[type=text], select {
@@ -37,6 +52,7 @@ textarea {
 .wrap {
    width:90%;
    margin:0 auto;
+   min-height: 90%;
 }
 
 .left_col {
@@ -50,7 +66,7 @@ textarea {
 }
 
 .left_col input {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .left_col .btn-gauche{
@@ -60,8 +76,9 @@ textarea {
 .right_col {
    float:right;
    width:72%;
-   background-color: #BBC6D0;
+   background-color: #94B8C4;
    min-height: 320px;
+   opacity: 0.8;
 }
 
 .boitebas {
@@ -79,7 +96,8 @@ textarea {
 }
 
 .page-header {
-    background-color: #1B3784;
+    opacity: 0.8;
+    background-color: #1D3320;
     margin-top: 0;
     padding: 10px 10px 10px 40px;
     margin-bottom: 10px;
@@ -92,7 +110,6 @@ textarea {
 }
 
 h1, h2, h3, h4 {
-    font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
     margin-bottom: 3px;
 }
 
@@ -107,7 +124,7 @@ h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter {
 
 .date a, .date a:visited {
 color: white;
-font: bold 1em Arial, sans-serif;
+font: bold 1em;
 text-decoration: none;
 }
 
@@ -127,6 +144,7 @@ text-decoration: none;
 }
 
 .post {
+    opacity: 0.9;
     margin-bottom: 5px;
     border: 2px solid grey;
     border-radius: 10px 25px;
@@ -151,7 +169,7 @@ text-decoration: none;
 
 .liens a, .liens a:visited {
 color: #FFFFFF;
-font: bold 1em Arial, sans-serif;
+font: bold 1em;
 }
 
 .right_col h2{
@@ -159,22 +177,26 @@ font: bold 1em Arial, sans-serif;
 }
 
 .footer {
+    opacity: 0.9;
     clear: both;
-    background-color: #47557B;
+    background-color: #1D3320;
     color: white;
     padding: 15px 70px;
     text-align: center;
-    font: bold 1em Arial, sans-serif;
+    font: bold 1em;
+    position: relative;
+	margin-top: -50px; /* negative value of footer height */
+	height: 50px;
 }
 
 .footer a,.footer a:visited {
     color: #FFFFFF;
-    font: bold 1em Arial, sans-serif;
+    font: bold 1em;
 }
 
 .step-links a,.step-links a:visited {
     color: #FFFFFF;
-    font: bold 1em Arial, sans-serif;
+    font: bold 1em;
 }
 
 .btn-default{
@@ -186,17 +208,17 @@ font: bold 1em Arial, sans-serif;
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #436690;
+  background-color: #347793;
   border: none;
   border-radius: 5px;
-  box-shadow: 3px 6px #999;
+  box-shadow: 3px 6px #677C7D;
 }
 
-.btn-default:hover {background-color: #23405c}
+.btn-default:hover {background-color: #2B4D59}
 
 .btn-default:active {
-  background-color: #23405c;
-  box-shadow: 0 3px #666;
+  background-color: #2B4D59;
+  box-shadow: 0 3px #677C7D;
   transform: translateY(4px);
 }
 
@@ -219,7 +241,7 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: #E5E5E5}
 
 .btn-gauche{
   display: inline-block;
@@ -230,23 +252,22 @@ tr:nth-child(even){background-color: #f2f2f2}
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #436690;
+  background-color: #347793;
   border: none;
   border-radius: 5px;
-  box-shadow: 3px 6px #999;
+  box-shadow: 3px 6px #677C7D;
 }
 
-.btn-gauche:hover {background-color: #23405c}
+.btn-gauche:hover {background-color: #2B4D59}
 
 .btn-gauche:active {
-  background-color: #23405c;
-  box-shadow: 0 3px #666;
+  background-color: #2B4D59;
+  box-shadow: 0 3px #677C7D;
   transform: translateY(4px);
 }
 
-
 .btn-group .button {
-    background-color: #436690;
+    background-color: #347793;
     border: none;
     color: white;
     padding: 10px 25px;
@@ -254,23 +275,24 @@ tr:nth-child(even){background-color: #f2f2f2}
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    font-weight: bold;
     font-size: 15px;
     cursor: pointer;
     float: left;
 }
 
 .btn-group .button:hover {
-    background-color: #3e8e41;
+    background-color: #4CBDE0;
 }
 
 .btn-group .button:active {
-  background-color: #23405c;
-  box-shadow: 0 3px #666;
+  background-color: #2B4D59;
+  box-shadow: 0 3px #677C7D;
   transform: translateY(4px);
 }
 
 .langue {
-    background-color: #436690;
+    background-color: #347793;
     border: none;
     color: white;
     padding: 10px 25px;
@@ -278,7 +300,8 @@ tr:nth-child(even){background-color: #f2f2f2}
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font: bold 1em Arial, sans-serif;
+    font-family: myFirstFont;
+    font-weight: bold;
     font-size: 15px;
     cursor: pointer;
     float: left;

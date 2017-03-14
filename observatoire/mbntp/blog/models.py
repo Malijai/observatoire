@@ -2,13 +2,15 @@
 from __future__ import unicode_literals
 from django.db.models import permalink
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
+
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
 # Create your models here.
 class Tag(models.Model):
-   mot_en = models.CharField(max_length=100, unique=True, error_messages={'unique':"Ce mot clef existe déjà"})
+   mot_en = models.CharField(max_length=100, unique=True, error_messages={'unique':_("Ce mot clef existe déjà")})
    slug = models.SlugField(max_length=100)
 
    class Meta:

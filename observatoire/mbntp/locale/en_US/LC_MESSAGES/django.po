@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-28 09:49-0500\n"
+"POT-Creation-Date: 2017-03-10 16:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,10 @@ msgstr "Choose keywords (Ctrl + Click)"
 #: blog/forms.py:26
 msgid "Entrer un mot clef"
 msgstr "New keyword"
+
+#: blog/models.py:13
+msgid "Ce mot clef existe déjà"
+msgstr "This keyword already exists"
 
 #: blog/views.py:49
 msgid "Nouveau commentaire dans le blog de l'observatoire"
@@ -93,15 +97,19 @@ msgstr "Description"
 msgid "Nom du sous-dossier"
 msgstr "New sub folder"
 
-#: mbntp/settings.py:143
+#: mbntp/settings.py:145
 msgid "French"
 msgstr "Français"
 
-#: mbntp/settings.py:144
+#: mbntp/settings.py:146
 msgid "English"
 msgstr "Anglais"
 
-#: templates/blog/base.html:26
+#: templates/blog/base.html:24
+msgid "Ajouter un billet"
+msgstr "Add a post"
+
+#: templates/blog/base.html:25
 msgid "Recherche"
 msgstr "Find"
 
@@ -133,26 +141,25 @@ msgid " le : "
 msgstr " on: "
 
 #: templates/blog/blogdetail.html:21
-#, python-format
 msgid ""
 "\n"
-"            Commenté par : %(auteurP)s, %(auteurN)s le %(date)s\n"
+"            <li>%(commentaire.texte_en)s. Par %(auteurP)s %(auteurN)s le "
+"%(date)s</li>\n"
 "            "
 msgstr ""
 "\n"
 "Commented by %(auteurP)s, %(auteurN)s on the %(date)s\n"
 "            "
 
-#: templates/blog/blogdetail.html:27 templates/blog/list.html:5
-#: templates/blog/list.html:25
+#: templates/blog/blogdetail.html:26 templates/blog/list.html:5
 msgid "Mots clefs"
 msgstr "Keywords"
 
-#: templates/blog/blogdetail.html:35
+#: templates/blog/blogdetail.html:34
 msgid "Commenter ce billet"
 msgstr "Comment this post"
 
-#: templates/blog/blogdetail.html:38
+#: templates/blog/blogdetail.html:37
 msgid "Retour à la liste"
 msgstr "Back to list"
 
@@ -177,25 +184,9 @@ msgstr "If you need to add a keyword, do it BEFORE writing your post"
 msgid "Ajouter un mot clef à la liste"
 msgstr "Add a keyword to the list"
 
-#: templates/blog/list.html:24
+#: templates/blog/list.html:23
 msgid "Voir plus / Commenter"
 msgstr "See / Comment"
-
-#: templates/blog/list.html:35
-msgid "Ajouter un billet"
-msgstr "Add a post"
-
-#: templates/blog/list.html:43
-msgid "précédente"
-msgstr "previous"
-
-#: templates/blog/list.html:47
-msgid "de"
-msgstr "of"
-
-#: templates/blog/list.html:51
-msgid "suivante"
-msgstr "next"
 
 #: templates/blog/recherche.html:6
 msgid "Recherche de terme (ou de portion de mot) dans les textes du blog"
@@ -229,12 +220,8 @@ msgstr "Posts with the keyword: "
 msgid "Il n'y a pas de billet "
 msgstr "There is no post "
 
-#: templates/depot/base_d.html:29
-msgid "Observatoire Depot de documents"
-msgstr "File repository"
-
-#: templates/depot/base_d1.html:29
-msgid "Depot de documents"
+#: templates/depot/base_d.html:29 templates/depot/base_d1.html:29
+msgid "Dépot de documents"
 msgstr "File repository"
 
 #: templates/depot/dossier.html:27
@@ -257,11 +244,11 @@ msgstr "Upload"
 msgid "Nouveau sous dossier"
 msgstr "New sub folder"
 
-#: templates/index.html:32
+#: templates/index.html:31
 msgid "Bienvenue sur le site privé de l'observatoire"
 msgstr "Welcome on the private part of the think tank"
 
-#: templates/index.html:33
+#: templates/index.html:32
 #, python-format
 msgid ""
 "\n"
@@ -276,23 +263,33 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"        You have to register to access to the blog and file manager. "
-"</p>\n"
-"        <p>If you want to participate to the think-tank, please email us "
-"in following this link:\n"
+"        You have to register to access to the blog and file manager. </p>\n"
+"        <p>If you want to participate to the think-tank, please email us in "
+"following this link:\n"
 "        <a href=\"mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp.gagnon."
 "ippm@ssss.gouv.qc.ca&subject=Inscription%%20pour%%20observatoire\">\n"
-"            Ask for a login to the Think-tank "
-"</a></p>\n"
+"            Ask for a login to the Think-tank </a></p>\n"
 "    "
 
-#: templates/index.html:39
+#: templates/index.html:38
+msgid "Accès au blog"
+msgstr "Go to the blog"
+
+#: templates/index.html:39 templates/indexmb/index.html:37
+msgid "Accès au dépot de fichiers"
+msgstr "Go to the file repository"
+
+#: templates/indexmb/index.html:35
+msgid "Bienvenue sur le site NTP MB"
+msgstr "Welcome on site of the NTP replication for the Manitoba"
+
+#: templates/indexmb/index.html:36
 msgid "Accès au blog de l'observatoire"
 msgstr "Go to the blog"
 
-#: templates/index.html:40
-msgid "Accès au dépot de fichiers"
-msgstr "Go to the file repository"
+#: templates/indexmb/index.html:38 templates/indexmb/index.html:39
+msgid "Accès au système d'entrée des données"
+msgstr "Go to the data entry system"
 
 #: templates/registration/logged_out.html:7
 msgid "Délogué!"
