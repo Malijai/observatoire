@@ -29,14 +29,14 @@
         </div>
 <div class="wrap">
     <p>Nom {{ user.first_name }} {{ user.last_name }}
-    {% for group in user.groups.all %}
-    {{ group.name }} - {{ group.id }}
+   <!--  {% for group in user.groups.all %}
+    {{ group.name }} - {{ group.id }}-->
     </p>
     <h2>{% trans "Bienvenue sur le site NTP MB" %}</h2>
      <h3><a href="{% url 'blogindex' %}" class="btn-default">{% trans "Accès au blog de l'observatoire" %}</a></h3>
     <h3><a href="{% url 'dossier' 1 %}" class="btn-default">{% trans "Accès au dépot de fichiers" %}</a></h3>
-     <!--<h3><a href="https://ntpmb.ca/cgi-bin/sondageS_M.pl?RA={{user.id}}" class="btn-default" >{% trans "Accès au système d'entrée des données" %}</a></h3>-->
-     <h3><a href="https://ntpmb.ca/cgi-bin/sondageS_M.pl?RA=27" class="btn-default" >{% trans "Accès au système d'entrée des données" %}</a></h3>
-    {% endfor  %}
+     <h3><a href="https://ntpmb.ca/cgi-bin/sondageS_M.pl?RA={{user.id}}" class="btn-default" >{% trans "Accès au système d'entrée des données" %}</a></h3>
+    <!-- <h3><a href="https://ntpmb.ca/cgi-bin/sondageS_M.pl?RA=27" class="btn-default" >{% trans "Accès au système d'entrée des données" %}</a></h3>-->
+    <!-- {% endfor  %}-->
     </body>
 </html>
