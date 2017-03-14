@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-10 16:09+0000\n"
+"POT-Creation-Date: 2017-03-14 14:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,6 +152,7 @@ msgstr ""
 "            "
 
 #: templates/blog/blogdetail.html:26 templates/blog/list.html:5
+#: templates/blog/list.html:25
 msgid "Mots clefs"
 msgstr "Keywords"
 
@@ -159,7 +160,7 @@ msgstr "Keywords"
 msgid "Commenter ce billet"
 msgstr "Comment this post"
 
-#: templates/blog/blogdetail.html:37
+#: templates/blog/blogdetail.html:40
 msgid "Retour à la liste"
 msgstr "Back to list"
 
@@ -249,18 +250,17 @@ msgid "Bienvenue sur le site privé de l'observatoire"
 msgstr "Welcome on the private part of the think tank"
 
 #: templates/index.html:32
-#, python-format
 msgid ""
 "\n"
-"        Vous devez être inscrit pour accéder au blog et au dépot de "
+"            Vous devez être inscrit pour accéder au blog et au dépot de "
 "documents.</p>\n"
-"        <p>Si vous désirez participer à cet observatoire veuillez en faire "
-"la demande par courriel en suivant ce lien :\n"
-"        <a href=\"mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp.gagnon."
-"ippm@ssss.gouv.qc.ca&subject=Inscription%%20pour%%20observatoire\">\n"
-"            Demande d'inscription à l'observatoire santé mentale justice du "
-"Québec</a></p>\n"
-"    "
+"            <p>Si vous désirez participer à cet observatoire veuillez en "
+"faire la demande par courriel en suivant ce lien :\n"
+"            <a href=\"mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp."
+"gagnon.ippm@ssss.gouv.qc.ca&subject=Inscription%%20pour%%20observatoire\">\n"
+"                Demande d'inscription à l'observatoire santé mentale justice "
+"du Québec</a></p>\n"
+"        "
 msgstr ""
 "\n"
 "        You have to register to access to the blog and file manager. </p>\n"
