@@ -45,7 +45,7 @@ def commentaire_new(request, pk):
             commentaire.entree = Entree.objects.get(pk=pk)
             commentaire.author = request.user
             commentaire.save()
-            lienpost = posttitre + ' ( http://santementalejustice.ca/mbntp/blog/' + str(billetacommenter.id) + '/ )'
+            lienpost = posttitre + ' (' + settings.BLOG_URL + str(billetacommenter.id) + '/ )'
             sujet = _(u"Nouveau commentaire dans le blog de l'observatoire")
             textecourriel = _(u"""Un nouveau commentaire au billet intitulé : {} vient d'être publié par {} {}.
 Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
@@ -79,7 +79,7 @@ def entree_new(request):
             entree.save()
             form.save_m2m()             # form save many to many (ici les tags selectionnes)
              #import ipdb; ipdb.set_trace()
-            lienpost = entree.titre_en + ' ( http://santementalejustice.ca/mbntp/blog/' + str(entree.id) + '/ )'
+            lienpost = entree.titre_en + ' (' + settings.BLOG_URL + str(entree.id) + '/ )'
             sujet = _(u"Nouveau billet dans le blog de l'observatoire")
             textecourriel = _(u"""Un nouveau billet intitulé : {} vient d'être publié par {} {}.
 Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
