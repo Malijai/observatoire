@@ -6,8 +6,11 @@
 <div class="post">
     <p class="espace">{% trans "Délogué!" %}</p>
     <p class="espace">
-       <a href="{% url 'login'%}" class="btn-default">{% trans "Se reloguer" %}</a>
- <!--  <a href="https://ntpmb.ca/login/" class="btn-default">{% trans "Se reloguer" %}</a>-->
+        {% if 'ntpmb.ca' in request.build_absolute_uri %}
+            <a href="https://ntpmb.ca/login/" class="btn-default">{% trans "Se reloguer" %}</a>-
+        {% else %}
+            <a href="{% url 'login'%}" class="btn-default">{% trans "Se reloguer" %}</a>
+        {% endif %}
     </p>
 </div>
 
