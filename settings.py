@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,26 +20,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'xv26#uomp+-_$xcv4=q+javxoxxnb9oochv1l5%%@^27(jg8@x'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
+ADMINS= config('ADMINS', cast=Csv())
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'blog',
-    'depot',
-    'accueil'
-]
+INSTALLED_APPS = config('INSTALLED_APPS', cast=Csv())
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,13 +69,24 @@ WSGI_APPLICATION = 'mbntp.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
+#For sqlite3
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE':  config('DB_ENGINE'),
+        'NAME': os.path.join(BASE_DIR, config('DB_NAME')),
     }
 }
+
+#For mysql databse
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config('DB_ENGINE'),
+#         'NAME': config('DB_NAME'),
+#         'USER': config('DB_USER'),
+#         'PASSWORD': config('DB_PASSWORD'),
+#         'HOST': ' config('DB_HOST'),
+#         'PORT':  config('DB_PORT'),
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -103,12 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = config('LOGIN_REDIRECT_URL')
+
+## utilise pour le login required
+LOGIN_URI = config('LOGIN_URI')
+# utilise dans les vues standard de generic view
+LOGIN_URL = config('LOGIN_URL')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
-
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URI = 'login/'
 
 LANGUAGE_CODE = 'fr-fr'
 
@@ -133,11 +139,20 @@ MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = 'static/'
+STATIC_URL = config('STATIC_URL')
+STATIC_ROOT = config('STATIC_ROOT')
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 #a utiliser pour les tests de courriels
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST=config('EMAIL_HOST')
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+DEFAULT_FROM_EMAIL=config('DEFAULT_FROM_EMAIL')
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+BLOG_URL= config('BLOG_URL')
