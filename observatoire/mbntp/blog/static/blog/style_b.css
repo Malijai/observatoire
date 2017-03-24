@@ -1,21 +1,22 @@
 @font-face {
     font-family: myFirstFont;
-    src: url(Junction-regular.otf);
+    src: url(Arsenal-Regular.otf);
 }
 
 html{height: 100%;}
 
 body  {
     margin: 0;
-    font-size: 1em;
+    font-size: 16px;
     font-family: myFirstFont;
     background: url(aa95db5513_INV4.jpg) no-repeat center fixed;
-    background-size: cover;height: 95%;
+    background-size: cover;
+    height: 95%;
 }
 
 p  {
     margin: 0;
-    font-size: 0.9em;
+    font-size: 16px;
     font-family: myFirstFont;
 }
 

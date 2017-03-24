@@ -13,7 +13,6 @@
         <tr><td></td><td><img src="/static/images/file.png"></td><td><a href="{{ doc.docfile.url }}">{{ doc.nicename }}</td><td>{{ doc.comment }}</td></tr>
         {% endfor %}
 
-
      {% for enfant in enfants %}
         <tr><td></td><td><img src="/static/images/folder.png"></td><td><a href="{% url 'dossier' enfant.id %}" > {{ enfant.nomdossier }}</a></td><td>{{ enfant.comment }}</td></tr>
      {% endfor %}
@@ -41,6 +40,7 @@
         <input type="hidden" name="pid" value="{{ pid }}" />
         <p><input type="submit" value={% trans "Téléverser" %}  class="btn-gauche"/></p>
     </form>
+
 
 {% endblock %}
 

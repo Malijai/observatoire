@@ -12,14 +12,14 @@
 
     <h2>{{ object.titre_en }}</h2>
      <p>{{ object.texte_en|linebreaksbr }}</p>
-
     <h3>{% trans "Commentaires" %}</h3>
        <ul>
         {% for commentaire in object.commentaire_set.all %}
            {% trans "Commenté par : " as auteur %}
             {% trans " le : " as le %}
-            {% blocktrans with date=commentaire.posted  auteurP=commentaire.author.first_name auteurN=commentaire.author.last_name %}
-            <li>{{commentaire.texte_en}}. Par {{auteurP }} {{auteurN }} le {{ date }}</li>
+            {% blocktrans with date=commentaire.posted  texte=commentaire.texte_en auteurP=commentaire.author.first_name auteurN=commentaire.author.last_name %}
+            <li>Par {{auteurP}} {{auteurN}} le {{date}}</li>
+                <p>{{texte}}</p>
             {% endblocktrans %}
         {% endfor %}
         </ul>

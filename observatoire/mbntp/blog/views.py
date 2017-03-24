@@ -11,10 +11,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.db.models import Q
 from django.conf import settings
 
+
 class BlogDetail(generic.DetailView):
     template_name = 'blog/blogdetail.html'
     model = Entree
-
 
 @login_required(login_url=settings.LOGIN_URI)
 def listing(request):

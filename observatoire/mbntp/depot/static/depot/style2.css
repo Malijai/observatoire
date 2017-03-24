@@ -1,27 +1,26 @@
 @font-face {
     font-family: myFirstFont;
-    src: url(Junction-regular.otf);
+    src: url(Arsenal-Regular.otf);
 }
 
-html, body {height: 100%;}
+html {height: 100%;}
 
 body  {
     margin: 0;
-    font-size: 1em;
+    font-size: 16px;
     font-family: myFirstFont;
     background: url(aa95db5513_INV4.jpg) no-repeat center fixed;
     background-size: cover;
+    height: 95%;
 }
 
 p  {
     margin: 0;
-    font-size: 0.9em;
-
+    font-size: 16px;
 }
 
 input, select, textarea {
     background-color: #E5E5E5;
-
     font-size: 14px;
     font-family: myFirstFont;
 }
@@ -62,7 +61,9 @@ textarea {
    padding: 0px 0px 0px 10px;
    border: 2px solid grey;
    border-radius: 5px;
-   font-size: 10px;
+   font-size: 12px;
+   background-color: #94B8C4;
+   opacity: 0.8;
 }
 
 .left_col input {
@@ -223,11 +224,11 @@ font: bold 1em;
 }
 
 ul.dossier  {
-    list-style-image: url('images/folder.png');
+    list-style-image: url('/static/images/folder.png');
 }
 
 ul.fichier  {
-    list-style-image: url('images/file.png');
+    list-style-image: url('/static/images/file.png');
 }
 
 table {

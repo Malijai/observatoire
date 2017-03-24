@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 14:23+0000\n"
+"POT-Creation-Date: 2017-03-23 19:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,35 +132,34 @@ msgstr ""
 msgid "Commentaires"
 msgstr "Comments"
 
-#: templates/blog/blogdetail.html:19
+#: templates/blog/blogdetail.html:20
 msgid "Commenté par : "
 msgstr "Commented by "
 
-#: templates/blog/blogdetail.html:20
+#: templates/blog/blogdetail.html:21
 msgid " le : "
 msgstr " on: "
 
-#: templates/blog/blogdetail.html:21
+#: templates/blog/blogdetail.html:22
 msgid ""
 "\n"
-"            <li>%(commentaire.texte_en)s. Par %(auteurP)s %(auteurN)s le "
-"%(date)s</li>\n"
+"            <li>Par %(auteurP)s %(auteurN)s le %(date)s</li>\n"
+"                <p>%(texte)s</p>\n"
 "            "
 msgstr ""
 "\n"
-"Commented by %(auteurP)s, %(auteurN)s on the %(date)s\n"
-"            "
+"            <li>By %(auteurP)s %(auteurN)s on the %(date)s</li>\n"
+"                <p>%(texte)s</p>\n""            "
 
-#: templates/blog/blogdetail.html:26 templates/blog/list.html:5
-#: templates/blog/list.html:25
+#: templates/blog/blogdetail.html:28 templates/blog/list.html:5
 msgid "Mots clefs"
 msgstr "Keywords"
 
-#: templates/blog/blogdetail.html:34
+#: templates/blog/blogdetail.html:36
 msgid "Commenter ce billet"
 msgstr "Comment this post"
 
-#: templates/blog/blogdetail.html:40
+#: templates/blog/blogdetail.html:42
 msgid "Retour à la liste"
 msgstr "Back to list"
 
@@ -275,19 +274,19 @@ msgstr ""
 msgid "Accès au blog"
 msgstr "Go to the blog"
 
-#: templates/index.html:39 templates/indexmb/index.html:37
+#: templates/index.html:39 templates/indexmb/index.html:35
 msgid "Accès au dépot de fichiers"
 msgstr "Go to the file repository"
 
-#: templates/indexmb/index.html:35
+#: templates/indexmb/index.html:33
 msgid "Bienvenue sur le site NTP MB"
 msgstr "Welcome on site of the NTP replication for the Manitoba"
 
-#: templates/indexmb/index.html:36
+#: templates/indexmb/index.html:34
 msgid "Accès au blog de l'observatoire"
 msgstr "Go to the blog"
 
-#: templates/indexmb/index.html:38 templates/indexmb/index.html:39
+#: templates/indexmb/index.html:36
 msgid "Accès au système d'entrée des données"
 msgstr "Go to the data entry system"
 
