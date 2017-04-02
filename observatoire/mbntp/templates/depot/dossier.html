@@ -4,17 +4,25 @@
 {% block content %}
 
 {% if parent.parentId.id %}
-    <h4><a href="{% url 'dossier' parent.parentId.id %}">  {{ parent.parentId }}</a></h4>
+    <h4><a href="{% url 'dossier' parent.parentId.id %}">  {{ parent.parentId }}</a> << {{ parent.nomdossier }}</h4>
+{% else %}
+    <h4> >> {{ parent.nomdossier }}</h4>
 {% endif %}
     <table>
-        <tr><td><img src="/static/images/folder.png"></td><td></td><td><h4>{{ parent.nomdossier }}</h4></td><td>{{ parent.comment }}</td></tr>
-
+        <tr>
+            <th width="30"></th>
+            <th width="239">{% trans "Nom" %}</th>
+            <th width="239">{% trans "Commentaires" %}</th>
+        </tr>
+{% if parent.parentId.id %}
+        <tr><td><img src="/static/images/folder.png"></td><td><a href="{% url 'dossier' parent.parentId.id %}">..</a></td><td></td></tr>
+{% endif %}
         {% for doc in documents %}
-        <tr><td></td><td><img src="/static/images/file.png"></td><td><a href="{{ doc.docfile.url }}">{{ doc.nicename }}</td><td>{{ doc.comment }}</td></tr>
+        <tr><td><img src="/static/images/file.png"></td><td><a href="{{ doc.docfile.url }}">{{ doc.nicename }}</a></td><td>{{ doc.comment }}</td></tr>
         {% endfor %}
 
      {% for enfant in enfants %}
-        <tr><td></td><td><img src="/static/images/folder.png"></td><td><a href="{% url 'dossier' enfant.id %}" > {{ enfant.nomdossier }}</a></td><td>{{ enfant.comment }}</td></tr>
+        <tr><td><img src="/static/images/folder.png"></td><td><a href="{% url 'dossier' enfant.id %}" > {{ enfant.nomdossier }}</a></td><td>{{ enfant.comment }}</td></tr>
      {% endfor %}
 
     </table>

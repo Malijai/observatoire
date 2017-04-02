@@ -15,9 +15,7 @@ def pardossier(request, pid):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            newdoc = Document(docfile=request.FILES['docfile'])
-#            newdoc.dossier = Dossier.objects.get(pk=request.POST['dossier'])
-            newdoc.comment = request.POST.get('comment', '')
+            newdoc = form.save(commit=False)
             newdoc.dossier = dossiercourant
             newdoc.save()
 

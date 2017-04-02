@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-23 19:41+0000\n"
+"POT-Creation-Date: 2017-04-02 21:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,11 +97,11 @@ msgstr "Description"
 msgid "Nom du sous-dossier"
 msgstr "New sub folder"
 
-#: mbntp/settings.py:145
+#: mbntp/settings.py:133
 msgid "French"
 msgstr "Français"
 
-#: mbntp/settings.py:146
+#: mbntp/settings.py:134
 msgid "English"
 msgstr "Anglais"
 
@@ -128,19 +128,19 @@ msgstr ""
 "Published on  %(date)s by: %(auteurP)s, %(auteurN)s\n"
 "        "
 
-#: templates/blog/blogdetail.html:16
+#: templates/blog/blogdetail.html:15 templates/depot/dossier.html:15
 msgid "Commentaires"
 msgstr "Comments"
 
-#: templates/blog/blogdetail.html:20
+#: templates/blog/blogdetail.html:18
 msgid "Commenté par : "
 msgstr "Commented by "
 
-#: templates/blog/blogdetail.html:21
+#: templates/blog/blogdetail.html:19
 msgid " le : "
 msgstr " on: "
 
-#: templates/blog/blogdetail.html:22
+#: templates/blog/blogdetail.html:20
 msgid ""
 "\n"
 "            <li>Par %(auteurP)s %(auteurN)s le %(date)s</li>\n"
@@ -149,17 +149,18 @@ msgid ""
 msgstr ""
 "\n"
 "            <li>By %(auteurP)s %(auteurN)s on the %(date)s</li>\n"
-"                <p>%(texte)s</p>\n""            "
+"                <p>%(texte)s</p>\n"
+"            "
 
-#: templates/blog/blogdetail.html:28 templates/blog/list.html:5
+#: templates/blog/blogdetail.html:26 templates/blog/list.html:5
 msgid "Mots clefs"
 msgstr "Keywords"
 
-#: templates/blog/blogdetail.html:36
+#: templates/blog/blogdetail.html:34
 msgid "Commenter ce billet"
 msgstr "Comment this post"
 
-#: templates/blog/blogdetail.html:42
+#: templates/blog/blogdetail.html:40
 msgid "Retour à la liste"
 msgstr "Back to list"
 
@@ -224,19 +225,23 @@ msgstr "There is no post "
 msgid "Dépot de documents"
 msgstr "File repository"
 
-#: templates/depot/dossier.html:27
+#: templates/depot/dossier.html:14
+msgid "Nom"
+msgstr "Name"
+
+#: templates/depot/dossier.html:34
 msgid "Pour ajouter un sous-dossier au dossier"
 msgstr "To add a sub folder to the current folder "
 
-#: templates/depot/dossier.html:31
+#: templates/depot/dossier.html:38
 msgid "Créer un sous-dossier"
 msgstr "Create a sub folder"
 
-#: templates/depot/dossier.html:36
+#: templates/depot/dossier.html:43
 msgid "Pour ajouter un document au dossier"
 msgstr "To add a document to the current folder "
 
-#: templates/depot/dossier.html:42
+#: templates/depot/dossier.html:49
 msgid "Téléverser"
 msgstr "Upload"
 
@@ -294,7 +299,7 @@ msgstr "Go to the data entry system"
 msgid "Délogué!"
 msgstr "Logged out!"
 
-#: templates/registration/logged_out.html:9
+#: templates/registration/logged_out.html:10
 msgid "Se reloguer"
 msgstr "Click here to login again"
 

@@ -308,3 +308,14 @@ tr:nth-child(even){background-color: #E5E5E5}
     float: left;
     border-radius: 50px 10px;
 }
+
+.grid A
+{
+    color: #000000;
+}
+
+.grid A:Hover
+{
+    color: #FFFFFF;
+    background-color: #000000;
+}
