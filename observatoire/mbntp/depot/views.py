@@ -16,12 +16,12 @@ def pardossier(request, pid):
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
             newdoc = Document(docfile=request.FILES['docfile'])
-            #newdoc = form.save(commit=False)
+            # newdoc.dossier = Dossier.objects.get(pk=request.POST['dossier'])
+            newdoc.comment = request.POST.get('comment', '')
             newdoc.dossier = dossiercourant
             newdoc.save()
+
             return HttpResponseRedirect(reverse('dossier', args=[newdoc.dossier.id]))
-        else:
-            return HttpResponseRedirect(reverse('dossier', args=[1]))
     else:
         form = DocumentForm()  # A empty, unbound form
 
