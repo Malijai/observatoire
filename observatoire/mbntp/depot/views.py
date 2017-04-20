@@ -19,8 +19,9 @@ def pardossier(request, pid):
             #newdoc = form.save(commit=False)
             newdoc.dossier = dossiercourant
             newdoc.save()
-
             return HttpResponseRedirect(reverse('dossier', args=[newdoc.dossier.id]))
+        else:
+            return HttpResponseRedirect(reverse('dossier', args=[1]))
     else:
         form = DocumentForm()  # A empty, unbound form
 
@@ -38,13 +39,6 @@ def pardossier(request, pid):
                                                  'dossiernom': dossiernom,
                                                  'pid': pid,
                                                  'form': form, })
-#    return render(request, "depot/dossier.html", {'enfants': enfants,
-#                                                 'parent': parent,
-#                                                 'documents': documents,
-#                                                 'dossiernom': dossiernom,
-#                                                 'pid': pid,
-#                                                 'form': form,})
-
 
 @login_required(login_url=settings.LOGIN_URI)
 def dossier_new(request, pid):
