@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 
 from .models import Document, Dossier
 from .forms import DocumentForm, DossierForm
@@ -55,3 +56,18 @@ def dossier_new(request, pid):
         form = DossierForm()
     return render(request, "depot/dossier_edit.html", {'form': form,
                                                       'dossier_id': pid})
+
+def home(request):
+    documents = Document.objects.all()
+    return render(request, 'depot/home.html', { 'documents': documents })
+
+def simple_upload(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'depot/simple_upload.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request, 'depot/simple_upload.html')
