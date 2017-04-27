@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from django.core.files.storage import FileSystemStorage
 
 from .models import Document, Dossier
 from .forms import DocumentForm, DossierForm
@@ -16,9 +15,7 @@ def pardossier(request, pid):
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
-            newdoc = Document(docfile=request.FILES['docfile'])
-            # newdoc.dossier = Dossier.objects.get(pk=request.POST['dossier'])
-            newdoc.comment = request.POST.get('comment', '')
+            newdoc = form.save(commit=False)
             newdoc.dossier = dossiercourant
             newdoc.save()
 
@@ -40,6 +37,13 @@ def pardossier(request, pid):
                                                  'dossiernom': dossiernom,
                                                  'pid': pid,
                                                  'form': form, })
+#    return render(request, "depot/dossier.html", {'enfants': enfants,
+#                                                 'parent': parent,
+#                                                 'documents': documents,
+#                                                 'dossiernom': dossiernom,
+#                                                 'pid': pid,
+#                                                 'form': form,})
+
 
 @login_required(login_url=settings.LOGIN_URI)
 def dossier_new(request, pid):
@@ -56,18 +60,3 @@ def dossier_new(request, pid):
         form = DossierForm()
     return render(request, "depot/dossier_edit.html", {'form': form,
                                                       'dossier_id': pid})
-
-def home(request):
-    documents = Document.objects.all()
-    return render(request, 'depot/home.html', { 'documents': documents })
-
-def simple_upload(request):
-    if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        return render(request, 'depot/simple_upload.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
-    return render(request, 'depot/simple_upload.html')
