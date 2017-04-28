@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 def isManitoba(http_host):
    return True if 'ntpmb.ca' in http_host else False
-    #return True
+   #return True
 
 def accueil(request):
     if isManitoba(request.META.get('HTTP_HOST')):

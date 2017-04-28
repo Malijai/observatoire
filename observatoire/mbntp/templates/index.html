@@ -37,6 +37,8 @@
         {% endblocktrans %}
         <h3><a href="{% url 'blogindex' %}" class="btn-default">{% trans "Accès au blog" %}</a></h3>
         <h3><a href="{% url 'dossier' 1 %}" class="btn-default">{% trans "Accès au dépot de fichiers" %}</a></h3>
+        <p><br />{% trans "Pour suivre l'envoi et la réception des invitations, accès réservé aux PI :" %}</br>
+        <h3><a href="/admin/suivi/contact/" class="btn-reserve">{% trans "Accès à la liste d'envoi des invitations" %}</a></h3>
     </div>
     <div class="footer">
        <a href="https://github.com/Malijai/observatoire/" class="date" ><img src="/static/images/GitHub-Mark-Light-32px.png"></a>

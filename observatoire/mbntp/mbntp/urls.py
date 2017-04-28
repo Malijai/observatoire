@@ -25,10 +25,10 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^blog/', include('blog.urls',)),
-    url(r'^depot/', include('depot.urls', )),
+    url(r'^blog/', include('blog.urls')),
+    url(r'^depot/', include('depot.urls' )),
     url(r'^manb/?', include('indexmb.urls')),
-    url(r'^/?', include('accueil.urls', )),
+    url(r'^/?', include('accueil.urls' )),
     url(r'^', include('django.contrib.auth.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

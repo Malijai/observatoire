@@ -6,12 +6,12 @@ from django.db import models
 
 class Contact(models.Model):
     nom = models.CharField(max_length=100)
-    prenom = models.CharField(max_length=200, blank=True)
-    affiliation = models.CharField(max_length=200, blank=True)
-    courriel = models.CharField(max_length=200, blank=True)
-    domaine = models.CharField(max_length=250, blank=True)
+    prenom = models.CharField(max_length=200, blank=True, null=True)
+    affiliation = models.CharField(max_length=200, blank=True, null=True)
+    courriel = models.CharField(max_length=200, blank=True, null=True)
+    domaine = models.CharField(max_length=250, blank=True, null=True)
     responsable = models.ForeignKey(User, blank=True)
-    envoifait = models.DateField(blank=True)
+    envoifait = models.DateField(blank=True, null=True)
     reponse = models.CharField(max_length=250, blank=True)
 
     def __str__(self):

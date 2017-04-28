@@ -13,10 +13,9 @@ class SuiviAdmin(admin.ModelAdmin):
 
     list_display = ('nom', 'prenom','responsable', 'envoifait','reponse')
 
-    list_filter = ['nom']
+    list_filter = ['responsable', 'envoifait']
 
     def save_model(self, request, obj, form, change):
-        obj.entrepar = request.user
         obj.save()
 
 admin.site.register(Contact, SuiviAdmin)
