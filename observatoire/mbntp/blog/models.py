@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 from django.db.models import permalink
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-
-
+from ckeditor.fields import RichTextField
 from django.db import models
+
+
 from django.utils.encoding import python_2_unicode_compatible
 
 # Create your models here.
@@ -28,7 +29,7 @@ class Tag(models.Model):
 
 class Entree(models.Model):
     titre_en = models.CharField(max_length=200)
-    texte_en = models.TextField()
+    texte_en = RichTextField(config_name='billet')
     author = models.ForeignKey(User, blank=True, null=True)
     posted = models.DateTimeField(db_index=True, auto_now_add=True)
     tag = models.ManyToManyField(Tag)
@@ -43,7 +44,7 @@ class Entree(models.Model):
         return u'%s' % self.titre_en
 
 class Commentaire(models.Model):
-    texte_en = models.TextField()
+    texte_en = RichTextField(config_name='comment')
     entree = models.ForeignKey(Entree, on_delete=models.CASCADE)
     author = models.ForeignKey(User, blank=True, null=True)
     posted = models.DateTimeField(db_index=True, auto_now_add=True)

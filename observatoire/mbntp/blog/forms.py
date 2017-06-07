@@ -1,6 +1,5 @@
 # coding=utf-8
 from django import forms
-
 from .models import Commentaire, Entree, Tag
 from django.utils.translation import ugettext_lazy as _
 
@@ -18,6 +17,7 @@ class EntreeForm(forms.ModelForm):
         labels = {'texte_en': _('Votre texte'),
                   'titre_en': _('Votre titre doit etre explicite'),
                   'tag': _('Indiquez des mots clefs (Ctrl + Click)'),}
+
 
 class TagForm(forms.ModelForm):
     class Meta:
