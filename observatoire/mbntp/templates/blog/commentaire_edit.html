@@ -6,6 +6,7 @@
 
     <form method="POST" class="Commentaire-form">{% csrf_token %}
         <table>
+        {{ form.media }}
         {{ form.as_table }}
         <tr><td><button type="submit" class="btn-default">Save</button></td><td></td></tr>
 
