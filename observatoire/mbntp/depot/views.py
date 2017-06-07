@@ -17,6 +17,8 @@ def pardossier(request, pid):
         if form.is_valid():
             newdoc = form.save(commit=False)
             newdoc.dossier = dossiercourant
+            newdoc.nicename =  newdoc.docfile.name.split('/')[-1]
+            newdoc.author = request.user
             newdoc.save()
 
             return HttpResponseRedirect(reverse('dossier', args=[newdoc.dossier.id]))
@@ -37,12 +39,6 @@ def pardossier(request, pid):
                                                  'dossiernom': dossiernom,
                                                  'pid': pid,
                                                  'form': form, })
-#    return render(request, "depot/dossier.html", {'enfants': enfants,
-#                                                 'parent': parent,
-#                                                 'documents': documents,
-#                                                 'dossiernom': dossiernom,
-#                                                 'pid': pid,
-#                                                 'form': form,})
 
 
 @login_required(login_url=settings.LOGIN_URI)

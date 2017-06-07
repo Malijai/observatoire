@@ -4,13 +4,13 @@ from .models import Document,Dossier
 
 class DepotFichiers(admin.ModelAdmin):
     fieldsets = [
-        ('fichiers', {'fields': ['docfile','comment',]}),
+        ('fichiers', {'fields': ['nicename', 'docfile','comment','author',]}),
         ('Dossier', {'fields': ['dossier',]}),
     ]
 
-    list_display = ('docfile', 'comment')
+    list_display = ('nicename', 'comment','posted')
 
-    list_filter = ['dossier']
+    list_filter = ['dossier','author','posted']
 
     def save_model(self, request, obj, form, change):
         obj.save()

@@ -186,8 +186,8 @@ font: bold 1em;
     text-align: center;
     font: bold 1em;
     position: relative;
-	margin-top: -50px; /* negative value of footer height */
-	height: 50px;
+	margin-top: -30px; /* negative value of footer height */
+	height: 30px;
 }
 
 .footer a,.footer a:visited {
