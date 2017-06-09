@@ -7,7 +7,7 @@ from django.db import models
 
 class Ressource(models.Model):
     nom = models.CharField(max_length=250)
-    acronyme = models.CharField(max_length=50, blank=True, null=True)
+    acronyme = models.CharField(max_length=50, default='-')
     depuis = models.CharField(max_length=100, blank=True, null=True)
     descriptif = models.TextField()
     domaine = models.CharField(max_length=250, blank=True, null=True, help_text="Domaines d'intervention / pratiques")
