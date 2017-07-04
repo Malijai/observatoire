@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db.models import permalink
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
 from django.db import models
@@ -33,6 +33,8 @@ class Entree(models.Model):
     author = models.ForeignKey(User, blank=True, null=True)
     posted = models.DateTimeField(db_index=True, auto_now_add=True)
     tag = models.ManyToManyField(Tag)
+#    groupe = models.ForeignKey(Group, blank=True, null=True,limit_choices_to={'name' : 'SansCourriel'})
+    groupe = models.ForeignKey(Group, blank=True, null=True, help_text="optionnel: définir un groupe pour limiter l'envoi de courriel à ses membres", limit_choices_to=~models.Q(name__in=['SansCourriel']))
 
     class Meta:
        ordering = ['-posted']
@@ -48,6 +50,9 @@ class Commentaire(models.Model):
     entree = models.ForeignKey(Entree, on_delete=models.CASCADE)
     author = models.ForeignKey(User, blank=True, null=True)
     posted = models.DateTimeField(db_index=True, auto_now_add=True)
+
+    class Meta:
+        ordering = ['posted']
 
     def __str__(self):
         return  '%s' % self.texte_en

@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response, render, redirect, get_object_or_404
 from django.views import generic
 from .forms import CommentaireForm, EntreeForm, TagForm, RechercheForm
-from .models import Entree, Tag, User
+from .models import Entree, Tag, User, Group
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.defaultfilters import slugify
 from django.contrib.auth.decorators import login_required
@@ -34,6 +34,34 @@ def listing(request):
         return render(request, 'blog/list.html', {'posts': posts, 'tags':tag_list})
 
 
+def fait_courriel_commentaire(commentaire, posttitre, billetacommenter):
+    lienpost = posttitre + ' (' + settings.BLOG_URL + str(billetacommenter.id) + '/ )'
+    sujet = _(u"Nouveau commentaire dans le blog de l'observatoire")
+    textecourriel = _(u"""
+Un nouveau commentaire au billet intitulé : {} vient d'être publié par {} {}.
+Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
+Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.
+Merci de participer à ce projet.
+
+Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)
+    """).format(lienpost, commentaire.author.first_name, commentaire.author.last_name)
+    return sujet, textecourriel
+
+
+def fait_courriel_entree(entree):
+    lienpost = entree.titre_en + ' (' + settings.BLOG_URL + str(entree.id) + '/ )'
+    sujet = _(u"Nouveau billet dans le blog de l'observatoire")
+    textecourriel = _(u"""
+Un nouveau billet intitulé : {} vient d'être publié par {} {}.
+Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
+Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.
+Merci de participer à ce projet.
+
+Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)
+""").format(lienpost, entree.author.first_name, entree.author.last_name)
+    return sujet, textecourriel
+
+
 @login_required(login_url=settings.LOGIN_URI)
 def commentaire_new(request, pk):
     billetacommenter = Entree.objects.get(pk=pk)
@@ -45,22 +73,8 @@ def commentaire_new(request, pk):
             commentaire.entree = Entree.objects.get(pk=pk)
             commentaire.author = request.user
             commentaire.save()
-            lienpost = posttitre + ' (' + settings.BLOG_URL + str(billetacommenter.id) + '/ )'
-            sujet = _(u"Nouveau commentaire dans le blog de l'observatoire")
-            textecourriel = _(u"""Un nouveau commentaire au billet intitulé : {} vient d'être publié par {} {}.
-Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
-Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.
-Merci de participer à ce projet.
-
-Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)
-""").format(lienpost, commentaire.author.first_name, commentaire.author.last_name )
-            courriels = [user.email for user in User.objects.exclude(Q(email__isnull=True) | Q(email=u''))]
-
-            with mail.get_connection() as connection:
-                mail.EmailMessage(
-                    sujet, textecourriel, 'malijai.caulet.ippm@ssss.gouv.qc.ca', courriels,
-                    connection=connection,
-                ).send()
+            sujet, textecourriel = fait_courriel_commentaire(commentaire, posttitre, billetacommenter)
+            envoi_courriel(commentaire.entree.groupe, sujet, textecourriel)
             return redirect('blogdetail', pk=pk)
     else:
         form = CommentaireForm()
@@ -68,9 +82,23 @@ Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)
                                                         'post_id': pk,
                                                         'Posttitre':  posttitre})
 
+
+def envoi_courriel(groupe, sujet, textecourriel):
+    courriel_query = User.objects.exclude(Q(email__isnull=True) | Q(email=u'') | Q(groups__name=u'SansCourriel'))
+    if groupe:
+        courriel_query = courriel_query & (User.objects.filter(groups=groupe))
+    courriels = [user.email for user in courriel_query]
+    with mail.get_connection() as connection:
+        mail.EmailMessage(
+            sujet, textecourriel, 'malijai.caulet.ippm@ssss.gouv.qc.ca', courriels,
+            connection=connection,
+        ).send()
+
+
 @login_required(login_url=settings.LOGIN_URI)
 def entree_new(request):
     tag_list = Tag.objects.all()
+#    group_list = Group.objects.exclude(name=u'SansCourriel')
     if request.method == "POST":
         form = EntreeForm(request.POST)
         if form.is_valid():
@@ -79,25 +107,13 @@ def entree_new(request):
             entree.save()
             form.save_m2m()             # form save many to many (ici les tags selectionnes)
              #import ipdb; ipdb.set_trace()
-            lienpost = entree.titre_en + ' (' + settings.BLOG_URL + str(entree.id) + '/ )'
-            sujet = _(u"Nouveau billet dans le blog de l'observatoire")
-            textecourriel = _(u"""Un nouveau billet intitulé : {} vient d'être publié par {} {}.
-Vous recevez ce courriel parce que vous ête membre de l'Observatoire en santé mentale et justice du Québec.
-Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.
-Merci de participer à ce projet.
-
-Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)
-""").format(lienpost, entree.author.first_name, entree.author.last_name)
-            courriels = [user.email for user in User.objects.exclude(Q(email__isnull=True) | Q(email=u''))]
-            with mail.get_connection() as connection:
-                mail.EmailMessage(
-                    sujet, textecourriel, 'malijai.caulet.ippm@ssss.gouv.qc.ca', courriels,
-                    connection=connection,
-                ).send()
+            sujet, textecourriel = fait_courriel_entree(entree)
+            envoi_courriel(entree.groupe, sujet, textecourriel)
             return redirect('blogdetail', entree.id)
     else:
         form = EntreeForm()
-    return render(request, "blog/entree_edit.html", {'form': form, 'tags':tag_list})
+#    return render(request, "blog/entree_edit.html", {'form': form, 'tags':tag_list, 'groupes':group_list,})
+    return render(request, "blog/entree_edit.html", {'form': form, 'tags':tag_list, })
 
 
 @login_required(login_url=settings.LOGIN_URI)
