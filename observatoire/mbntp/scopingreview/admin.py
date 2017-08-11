@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-
-from .models import Article,Typepub,Typeetude,Typeparticipant,Interception,Originebd
-
+from django.forms import TextInput, Textarea
+from .models import Article,Typepub,Typeetude,Typeparticipant,Interception,Originebd,Devis
+from django.db import models
 
 class ArticleAdmin(admin.ModelAdmin):
-    fieldsets = [
-        ('Article', {'fields': [('nom', 'annee'), 'titre', 'resume','articlefile',('originebd','origine')]}),
-        ('Description', {'fields': ['typepub', ('typeetude','typeetudetxt'),('interception','interceptiontxt')]}),
-        ('Population', {'fields': [('typeparticipant', 'typeparticipanttxt'),'comparaisontxt','region']}),
-        ('Intervention / Programme', {'fields': ['interventiontxt']}),
-        ('Résultats', {'fields': ['mesuresresultats', 'analyses']}),
-        ('Autres informations', {'fields': ['autresinfos']}),
-    ]
 
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size':'100'})},
+        models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},
+    }
+    fieldsets = [
+        ('Article', {'fields': [('nom', 'annee'), 'titre', 'resumecourt','articlefile',('originebd','typepub')]}),
+        ('Description de l étude', {'fields': [('interception','interceptiontxt'), 'resume',('typeetude','typeetudetxt'),('devisetude', 'duree', 'region')]}),
+        ('Population', {'fields': [('typeparticipanttxt','comparaisonouinon', 'comparaisontxt'),('nparticipants','agemoyen','typeparticipant')]}),
+        ('Résultats', {'fields': ['mesuresresultats', 'tauxmesures', 'analyses']}),
+        ('Intervention / Programme', {'fields': [('nomprogramme','tsmreference'), 'interventiontxt','clientprogramme','intervenantprogramme','dureeprogramme', 'conditionprogramme',('echec', 'succes'),'descriptionprogramme']}),
+        ('Autres informations', {'fields': ['autresinfos', 'origine']}),
+    ]
 
     list_display = ('nom', 'annee', 'titre')
 
@@ -30,3 +34,4 @@ admin.site.register(Typeetude)
 admin.site.register(Typeparticipant)
 admin.site.register(Interception)
 admin.site.register(Originebd)
+admin.site.register(Devis)
