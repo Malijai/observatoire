@@ -6,7 +6,6 @@ from .models import Article,Typepub,Typeetude,Typeparticipant,Interception,Origi
 from django.db import models
 
 class ArticleAdmin(admin.ModelAdmin):
-
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size':'100'})},
         models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},
@@ -25,7 +24,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ['interception',]
 
 
-def save_model(self, request, obj, form, change):
+    def save_model(self, request, obj, form, change):
         obj.save()
 
 admin.site.register(Article, ArticleAdmin)
