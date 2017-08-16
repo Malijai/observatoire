@@ -5,7 +5,8 @@ from .models import Article,Typepub,Typeetude,Typeparticipant,Interception,Origi
 
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Article', {'fields': [('nom', 'annee'), 'titre', 'resumecourt','articlefile',('originebd','typepub')]}),
+        ('Article', {'fields': [('nom', 'annee'), 'titre', 'resumecourt',('originebd','typepub')]}),
+#        ('Article', {'fields': [('nom', 'annee'), 'titre', 'resumecourt','articlefile',('originebd','typepub')]}),
         ('Description de l étude', {'fields': [('interception','interceptiontxt'), 'resume',('typeetude','typeetudetxt'),('devisetude', 'duree', 'region')]}),
         ('Population', {'fields': [('typeparticipanttxt','comparaisonouinon', 'comparaisontxt'),('nparticipants','agemoyen','typeparticipant')]}),
         ('Résultats', {'fields': ['mesuresresultats', 'tauxmesures', 'analyses']}),
