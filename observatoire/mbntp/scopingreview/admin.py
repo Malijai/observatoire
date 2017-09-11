@@ -14,15 +14,15 @@ class ArticleAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Article', {'fields': [('nom', 'annee'), 'titre', 'resumecourt','articlefile',('originebd','typepub')]}),
         ('Description de l étude', {'fields': [('interception','interceptiontxt'), 'resume',('typeetude','typeetudetxt'),('devisetude', 'duree', 'region')]}),
-        ('Population', {'fields': ['typeparticipanttxt',('comparaisonouinon', 'comparaisontxt'),('nparticipants','agemoyen','typeparticipant')]}),
+        ('Population', {'fields': ['typeparticipanttxt',('comparaisonouinon', 'comparaisontxt'),('nparticipants','agemoyen','hommesfemmes')]}),
         ('Résultats', {'fields': ['mesuresresultats', 'tauxmesures', 'analyses']}),
         ('Intervention / Programme', {'fields': [('nomprogramme','tsmreference'), 'interventiontxt','clientprogramme','intervenantprogramme','dureeprogramme', 'conditionprogramme',('echec', 'succes'),'descriptionprogramme']}),
-        ('Autres informations', {'fields': ['autresinfos', 'origine']}),
+        ('Autres informations', {'fields': ['autresinfos', 'origine','typeparticipant']}),
     ]
 
-    list_display = ('nom', 'annee', 'titre')
+    list_display = ('nom', 'annee', 'titre', 'author')
 
-    list_filter = ['interception',]
+    list_filter = ['interception', 'author',]
 
 
     def save_model(self, request, obj, form, change):
