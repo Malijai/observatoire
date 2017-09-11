@@ -1,0 +1,27 @@
+{% load static %}
+{% load i18n %}
+<html>
+    <head>
+        <title>Observatoire</title>
+        <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+   </head>
+    <body>
+        <div class="container">
+        <h2>Liste des articles classés et examinés</h2>
+              <table>
+                <tr class="row2"><th width="400">Titre</th>
+                    <th width="150">Auteurs</th><th width="30">Année</th><th width="30">Assistant</th><th width="100">Pdf</th></tr>
+                {% for article in articles %}
+                    <tr class="{% cycle 'row1' 'row2' %}">
+                        <td>{{ article.titre }}</td><td> {{ article.nom }}</td><td>{{ article.annee }}</td>
+                  <td>{{article.author.first_name }}</td>
+                        <td><a href="{% url 'some_pdf' article.id %}" class= 'button'>{% trans "Générer le pdf" %}</a></td>
+                    </tr>
+                {% endfor  %}
+            </table>
+
+            <!--<p><a href="{% url 'fait_csv' %}" class= 'button'>{% trans "Exporter tout en csv" %}</a></p>-->
+
+        </div>
+   </body>
+</html>
