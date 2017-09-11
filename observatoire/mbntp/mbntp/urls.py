@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^depot/', include('depot.urls')),
     url(r'^manb/?', include('indexmb.urls')),
-    url(r'^spvm/?', include('SPVM.urls')),
+#    url(r'^spvm/?', include('SPVM.urls')),
     url(r'^scop/', include('scopingreview.urls')),
     url(r'^/?', include('accueil.urls')),
     url(r'^', include('django.contrib.auth.urls')),
