@@ -12,6 +12,8 @@ from reportlab.lib.units import inch
 PAGE_HEIGHT=defaultPageSize[1]; PAGE_WIDTH=defaultPageSize[0]
 styles = getSampleStyleSheet()
 
+#A necessite l'installation de reportlab (pip install reportlab)
+
 from django.utils.six.moves import range
 from .models import Article, User
 
@@ -304,4 +306,5 @@ def some_pdf(request, pk):
 def PdfExtraction(request):
     articles = Article.objects.all()
     return render(request, 'scop/index.html',  {'articles': articles})
+
 

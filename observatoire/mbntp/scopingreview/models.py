@@ -110,7 +110,7 @@ class Article(models.Model):
     nparticipants= models.TextField(verbose_name="N des différents groupes", blank=True, null=True)
     hommesfemmes = models.TextField(verbose_name="Proportion des hommes et femmes (% hommes)", blank=True, null=True)
     agemoyen= models.TextField(verbose_name="Moyennes d'age des différents groupes", blank=True, null=True)
-    typeparticipant = models.ManyToManyField(Typeparticipant, verbose_name="Type de participants à l'étude", help_text="Ancien champ, ne pas remplir. Pour mémoire seulement", default=1)
+    typeparticipant = models.ManyToManyField(Typeparticipant, verbose_name="Type de participants à l'étude")
     typeetude = models.ManyToManyField(Typeetude, verbose_name="Type d'étude, méthode")
     devisetude = models.ManyToManyField(Devis,verbose_name="Devis de l'étude")
     typeetudetxt = models.TextField(verbose_name="Détails type étude", blank=True, null=True)
@@ -124,14 +124,13 @@ class Article(models.Model):
     clientprogramme = models.TextField(verbose_name="Clientèle cible / critères d'admissibilité au programme", blank=True, null=True)
     intervenantprogramme = models.TextField(verbose_name="Professionnels du programme", blank=True, null=True)
     dureeprogramme = models.CharField(max_length=250, verbose_name="Durée du programme (durée du suivi dans le programme)", blank=True, null=True)
-    conditionprogramme = models.TextField(verbose_name="Conditions pour être éligible au programme", blank=True, null=True)
+    conditionprogramme = models.TextField(verbose_name="Conditions a respecter dans le programme", blank=True, null=True)
     echec = models.CharField(max_length=250, verbose_name="Conséquences en cas de non conformité aux conditions du programme", blank=True, null=True)
     succes = models.CharField(max_length=250, verbose_name="Conséquences en cas d'adhérence au programme", blank=True, null=True)
-    descriptionprogramme = models.BooleanField(verbose_name="Cliquer si le programme est décrit dans l'article ou référencé")
     origine = models.TextField(verbose_name="Ancien champ ne pas remplir ", blank=True, null=True,
                                help_text="En lien avec une ressource ou un programme? Si oui expliquer")
     autresinfos = models.TextField(verbose_name="Autres informations, commentaires", blank=True, null=True)
-    author = models.ForeignKey(User, related_name='AssistantScoping',blank=True, null=True, verbose_name="Assistant ayant procédé à l'analyse",)
+    author = models.ForeignKey(User, related_name='AssistantScoping',blank=True, null=True, verbose_name="Assistant ayant procede à l'analyse",)
     posted = models.DateTimeField(db_index=True, auto_now_add=True)
 
     def __str__(self):
