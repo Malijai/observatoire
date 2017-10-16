@@ -1,0 +1,422 @@
+body,p {
+  font-size: 0.9em;
+  font-family: Verdana,Arial,Sans,Helvetica,sans-serif;
+}
+
+table {
+	width: 95%;
+	margin-left:15px;
+}
+tr td{
+	padding:    0 3px 0 3px;
+	border-bottom: #69c solid 1px;
+	margin-left:15px;
+}
+td.Q2 {
+background: #eee;
+}
+
+td.Q1 {
+
+}
+
+td.R2 {
+background: #eee;
+}
+td.R1 {
+
+}
+
+td.fille {
+ background: #D3E3F6;
+}
+
+td.mere {
+border-top:  #1459A8 solid 1px;
+border-bottom:  #1459A8 solid 2px;
+background: #BAC9DA;
+}
+td.fillemere {
+ background: #B0CEF0;
+}
+
+td.plus {
+background: #37D0D1;
+} 
+
+td.plusun {
+background: #F49D47;
+}
+
+td.plusunun {
+background: #E9D64C;
+}
+
+td.plusundeux {
+background: #E9AA4C;
+}
+
+td.plusuntrois {
+background: #EEE09E;
+}
+
+
+td.plusdeux {
+background: #2EF4D2;
+}
+
+td.plusdeuxun {
+background:#AEE047;
+}
+td.plusdeuxdeux {
+background:#83EF61;
+}
+td.plusdeuxtrois {
+background:#D0EDBB;
+}
+/* $Id: example.css,v 1.5 2006/03/27 02:44:36 pat Exp $ */
+
+/*--------------------------------------------------
+  REQUIRED to hide the non-active tab content.
+  But do not hide them in the print stylesheet!
+  --------------------------------------------------*/
+.tabberlive .tabbertabhide {
+ display:none;
+}
+
+/*--------------------------------------------------
+  .tabber = before the tabber interface is set up
+  .tabberlive = after the tabber interface is set up
+  --------------------------------------------------*/
+.tabber {
+}
+.tabberlive {
+ margin-top:1em;
+}
+
+/*--------------------------------------------------
+  ul.tabbernav = the tab navigation list
+  li.tabberactive = the active tab
+  --------------------------------------------------*/
+ul.tabbernav
+{
+ margin:0;
+ padding: 2px 0;
+ font: bold 0.8em Arial, sans-serif;
+}
+
+/*top-menu {background: #2C4056; color: #fff; height:1.8em; font-size: 0.em; padding: 2px 2px 0px 6px;}*/
+
+ul.tabbernav li
+{
+ list-style: none;
+ margin: 0;
+ display: inline;
+}
+
+ul.tabbernav li a
+{
+ padding: 3px 0.5em;
+ margin-left: 3px;
+ border: 1px solid #778;
+ border-bottom: none;
+ background: #759FCF;
+ text-decoration: none;
+}
+
+ul.tabbernav li a:link { color: #2c4056; }
+ul.tabbernav li a:visited { color: #2c4056; }
+
+ul.tabbernav li a:hover
+{
+ color: #fff;
+ background: #759FCF;
+ border-color: #555;
+}
+
+ul.tabbernav li.tabberactive a
+{
+ background-color: #f8f8f8;
+ border-bottom: 1px solid #fff;
+}
+
+ul.tabbernav li.tabberactive a:hover
+{
+ color: #000;
+ background: white;
+ border-bottom: 1px solid white;
+}
+
+/*--------------------------------------------------
+  .tabbertab = the tab content
+  Add style only after the tabber interface is set up (.tabberlive)
+  --------------------------------------------------*/
+.tabberlive .tabbertab {
+ padding:5px;
+ border:1px solid #aaa;
+ border-top: 1px solid #778;
+ background: #f8f8f8;
+ width :90%;
+
+ /* If you don't want the tab size changing whenever a tab is changed
+    you can set a fixed height */
+
+ /* height:200px; */
+
+ /* If you set a fix height set overflow to auto and you will get a
+    scrollbar when necessary */
+
+ /* overflow:auto; */
+}
+
+/* If desired, hide the heading since a heading is provided by the tab */
+.tabberlive .tabbertab h2 {
+ display:none;
+}
+.tabberlive .tabbertab h3 {
+ display:none;
+}
+
+/* Example of using an ID to set different styles for the tabs on the page */
+.tabberlive#tab1 {
+}
+.tabberlive#tab2 {
+}
+.tabberlive#tab2 .tabbertab {
+ height:200px;
+ overflow:auto;
+}
+
+
+
+select {
+  background-color: #91e1f9;
+}
+
+/* pour bascule etc */
+
+li.duc {
+ margin-bottom:1pt;
+ font-size: 11pt;
+ margin-top:1pt;
+ text-indent:0em;
+ margin-left:1em;
+ padding-left:1.5em;
+ list-style-type:none;
+ background:#BAC9DA;
+ background-image: url(next.gif);
+ background-repeat: no-repeat;
+
+}
+
+li.dcc {
+ margin-bottom:1pt;
+ font-size: 11pt;
+ margin-top:1pt;
+ text-indent:0em;
+ margin-left:1em;
+ padding-left:1pt;
+ list-style-type:none;
+ background:#e1e7f4;
+}
+
+a:link{color:green;text-decoration: none;}
+a:visited{color:green;text-decoration: none;}
+
+a:link.dot{color:#e1142c;text-decoration: none; font-weight: bold;font-size: 100%;}
+a:hover.dot{color:#e1142c; text-decoration: none; }
+
+img{border: none;}
+
+ p.dot {
+ margin-bottom:2pt;
+ font-size: 11pt;
+ margin-top:2pt;
+ text-indent:0em;
+ margin-right:2em;
+ margin-left:3em;
+ padding-left:1pt;
+ background:url("..hlw_bg_nouv.jpg");
+}
+
+/* CSS du menu horizontal menu.js */
+
+.menu, .ssmenu {
+	font-size:1em;
+	font-weight:bold;
+	font-family:        "MS Sans Serif",Avantgarde, "Arial Narrow", sans-serif;
+	border:1px solid  #1459A8;
+	padding:1px;
+/* width et margin sont au cas ou le javascript est d�sactiv�. */
+	width:15em;
+	margin:1em;
+}
+
+/* .menu = les cases toujours visibles (comme Fichier, Edition... dans un logiciel) */
+.menu {
+	background-color: #BAC9DA;
+	text-align:center;
+	padding:3px 1px;
+	font-variant: small-caps;
+	border-bottom:  #1459A8 solid 2px;
+}
+/* .ssmenu = Les parties "d�roulantes" qui s'affiche au survol d'un .menu */
+.ssmenu {
+	background-color:#D3E3F6;
+}
+
+.menu span, .ssmenu span {
+/* Ne pas toucher
+	C'est pour cacher les ; en fin de <li>, ce qui permet aux synth�se vocales de prendre une
+	pause dans l'�locution */
+	display:none;
+}
+
+.ssmenu ul, .ssmenu li {
+/* Ne pas trop toucher.
+	Les items (les <li>) des sous-menus, notamment pour enlever les puces des liste */
+	padding:0;
+	margin: 0px 5px;
+	list-style-type:none;
+}
+
+.menu a, .ssmenu a, .menu a:visited, .ssmenu a:visited {
+/* Les liens qui ne sont pas sous le curseur. */
+	color:black;
+	text-decoration:none;
+/* Ne pas modifier le block, margin et width */
+	display:block;
+	margin:0px;
+	width:100%;
+	font-size:1em;
+}
+html>body .menu a, html>body .menu a:visited, html>body .menu a:hover, html>body .menu a:active,
+html>body .ssmenu a, html>body .ssmenu a:visited, html>body .ssmenu a:hover, html>body .ssmenu a:active {
+	width:auto;
+	font-size:1em;
+}
+
+.ssmenu ul:hover, .ssmenu a:hover, .ssmenu a:focus, .menu a:hover, .menu a:focus {
+/* Les liens sous le curseur.
+	On change les couleurs du texte et de fond, et on enl�ve le soulignement.
+*/
+	background-color:#dde;
+	color:black;
+	text-decoration:none;
+}
+
+img {
+/* Si on met une image dans un lien (par exemple un logo �  gauche du lien), pas de bordure
+	car c'est vilain :-p */
+	border:none;
+}
+
+.ssmenu img {
+/* un petit espacement entre l'image et le texte du lien <a href="..."><img.../>blabla</a> */
+	margin-right:2px;
+}
+
+.ssmenu img.hr {
+/* Encore un peu exp�rimental, un <hr /> entre deux items pour faire un "s�parateur"... */
+	margin-top:1px;
+	margin-bottom:1px;
+	margin-left:0;
+	margin-right:0;
+	width:100%;
+	display:block;
+}
+
+/*
+Bref... pour r�sumer, ce qu'il y a � modifier � la base, c'est :
+- couleurs, police, bordure.
+- l'effet sp�cial IE pour les ssmenu si on aime �a...
+- police et couleurs des liens "non survol�s" et "survol�s".
+*/
+#nav{font: bold 0.8em Arial, sans-serif; }
+#nav, #nav ul{
+     margin:0;
+     padding:0;
+     list-style-type:none;
+     list-style-position:outside;
+     position:relative;
+     line-height:1.5em;
+  }
+
+
+  #nav a:link, #nav a:active, #nav a:visited{
+    width:12em;
+    display:block;
+    padding:0px 5px;
+    border-bottom:  #1459A8 solid 2px;
+    color:#000;
+    background-color:#BAC9DA;
+ }
+
+#nav a:hover{
+    background-color:#D3E3F6;
+    color:#333;
+}
+ 
+#nav li{
+    float:left;
+    position:relative;
+}
+
+#nav ul {
+    position:absolute;
+    width:10em;
+    top:1.5em;
+    display:none;
+}
+#nav li ul a{
+    width:10em;
+    float:left;
+}
+
+#nav ul ul{
+	top:auto;
+	}	
+
+#nav li ul ul {
+    left:12em;
+    margin:0px 0 0 10px;
+    }
+
+#nav li:hover ul ul, #nav li:hover ul ul ul, #nav li:hover ul ul ul ul{
+    display:none;
+    }
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li li li li:hover ul{
+    display:block;
+    }
+	
+.bleue	{
+    width:15em;
+    padding:0px 5px;
+    border-bottom:  #1459A8 solid 2px;
+    color:#000;
+    text-decoration:none;
+    background-color:#BAC9DA;
+}
+div.boite {
+    padding:1em 1em 1em 1em;
+    margin: 0 2em 0 2em;
+    background-color: #f8f8f8;
+	border:  #1459A8 solid 2px;
+ }
+.bouton{
+display: block;
+border:none;
+padding:2px 0 0 0;
+background-image: url(buttonBackground.gif);
+background-repeat: no-repeat;
+width: 96px;
+height: 24px;
+margin: 2px auto;
+font-weight: bold;
+text-decoration: none;
+font-size: 1em;
+
+}
+.largeur{
+    width:20em;
+}

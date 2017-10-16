@@ -1,0 +1,36 @@
+{% load i18n %}
+{% load static %}
+
+<html>
+    <head>
+         <title>Questions etc</title>
+         <link rel="stylesheet" href="{% static 'blog/style_b.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+
+</head>
+<body>
+<h2>Form</h2>
+
+<form method="post">
+    {% csrf_token %}
+        <select name="personneid" id="personneid" >
+            <option>Select a case</option>
+            {% for personne in personnes %}
+            <option value="{{personne.id}}">{{ personne.code}}</option>
+            {% endfor %}
+        </select>
+        <select name="questionnaireid" id="questionnaireid" >
+            <option>Select a case</option>
+            {% for questionnaire in questionnaires %}
+            <option value="{{questionnaire.id}}">{{ questionnaire.nom_en}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" >Choisir</button>
+
+    </form>
+
+</body>
+</html>
+

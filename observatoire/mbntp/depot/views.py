@@ -33,7 +33,7 @@ def pardossier(request, pid):
         document.nicename = document.docfile.name.split('/')[-1]
         documents.append(document)
 
-    return render(request, "depot/dossier.html", {'enfants': enfants,
+    return render(request, "dossier.html", {'enfants': enfants,
                                                  'parent': parent,
                                                  'documents': documents,
                                                  'dossiernom': dossiernom,
@@ -54,5 +54,5 @@ def dossier_new(request, pid):
             return HttpResponseRedirect(reverse('dossier', args=[dossier.id]))
     else:
         form = DossierForm()
-    return render(request, "depot/dossier_edit.html", {'form': form,
+    return render(request, "dossier_edit.html", {'form': form,
                                                       'dossier_id': pid})

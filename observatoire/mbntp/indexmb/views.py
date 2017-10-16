@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def indexMB(request):
-    return render(request, "indexmb/index.html")
+    return render(request, "index.html")

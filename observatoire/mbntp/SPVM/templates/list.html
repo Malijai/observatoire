@@ -1,0 +1,70 @@
+{% load i18n %}
+{% load static %}
+{% load formulaires %}
+<html>
+    <head>
+         <title>Questions etc</title>
+         <link rel="stylesheet" href="{% static 'blog/style_b.css' %}">
+
+        <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<script type="text/javascript" src="/static/admin/js/SelectBox.js"></script>
+<script type="text/javascript" src="/static/admin/js/SelectFilter2.js"></script>
+<script type="text/javascript" src="/static/admin/js/calendar.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/DateTimeShortcuts.js"></script>
+
+</head>
+<body>
+<h2>Form</h2>
+<form action="" method="post">
+{% csrf_token %}
+
+    <select name="personne" id="personne" >
+        <option>Select a case</option>
+        {% for personne in personnes %}
+        <option value="{{ personne.id}}">{{ personne.code }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Choisir</button>
+</form>
+
+<h3>Include test</h3>
+<h3>Questions</h3>
+
+    <ul>
+     {% for question in questions %}
+         {% if question in parents  %}
+            <li>  P- {{question.questionno}},  {{question.questionen}}</li>
+            {% include "name_snippet.html"  with typequest=question.typequestion questid=question.id %}
+        {% endif %}
+
+        <ul>
+        {% for enfant in enfants %}
+            {% if enfant.parentId in parents and enfant == question %}
+                <li>  E- {{question.questionno}},  {{question.typequestion}},  {{question.questionen}}</li>
+            {% include "name_snippet.html"  with typequest=question.typequestion questid=question.id %}
+            {% endif %}
+         {% endfor %}
+        </ul>
+
+        {% if question in  orphelins %}
+        <li>{{question.questionno}},  {{question.typequestion}},  {{question.questionen}}</li>
+            {% include "name_snippet.html"  with typequest=question.typequestion questid=question.id %}
+       {% endif %}
+
+     {% endfor %}
+
+
+      </ul>
+    </body>
+</html>
+

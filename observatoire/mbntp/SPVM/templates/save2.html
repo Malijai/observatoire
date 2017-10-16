@@ -1,0 +1,23 @@
+{% extends 'dataentry_base.html' %}
+{% load i18n %}
+{% load static %}
+{% load formulaires %}
+
+{% block content %}
+<h2>{{Questtitre}}</h2>
+<h2>Essai Personne_ID={{ pid }} </h2>
+{% csrf_token %}
+   <input name="pid" type="hidden" value="{{ pid }}" />
+   <input name="qid" type="hidden" value="{{ qid }}" />
+
+
+<ul>
+    {% for fille in ascendancesF %}
+
+            <li>{{ fille }} </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+
+
+

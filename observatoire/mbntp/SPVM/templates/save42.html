@@ -1,0 +1,37 @@
+{% extends 'dataentry_base.html' %}
+{% load i18n %}
+{% load static %}
+{% load formulaires %}
+
+{% block content %}
+<h2>{{Questtitre}}</h2>
+<h2>Essai Personne_ID={{ pid }} </h2>
+{% csrf_token %}
+   <input name="pid" type="hidden" value="{{ pid }}" />
+   <input name="qid" type="hidden" value="{{ qid }}" />
+
+<ul>
+    {% for question in questions %}
+        {% if question.id not in ascendancesF and question.id not in ascendancesM %}
+            <li>Ni Ni {{ question.id }}-{{ question.questionen }} </li>
+
+        {% elif question.id in ascendancesF and question.id in ascendancesM %}
+            <li>Mere et Fille {{ question.id }}-{{ question.questionen }} </li>
+
+        {% elif question.id in ascendancesM and question.id not in ascendancesF %}
+            <li>Mere et NON fille {{ question.id }}-{{ question.questionen }}</li>
+        {% endif %}
+            {% for enfant in question.question_set.all %}
+                {% if enfant.id in ascendancesM %}
+                    <ul>
+                        <li>Enfant {{ enfant.id }} {{ enfant.questionen }}</li>
+                    </ul>
+                {% endif %}
+            {% endfor %}
+
+    {% endfor %}
+</ul>
+{% endblock content %}
+
+
+

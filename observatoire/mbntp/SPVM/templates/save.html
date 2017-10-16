@@ -1,0 +1,44 @@
+{% extends 'dataentry_base.html' %}
+{% load i18n %}
+{% load static %}
+{% load formulaires %}
+
+{% block content %}
+<h2>{{Questtitre}}</h2>
+<h2>Essai Personne_ID={{ pid }} </h2>
+{% csrf_token %}
+   <input name="pid" type="hidden" value="{{ pid }}" />
+   <input name="qid" type="hidden" value="{{ qid }}" />
+   <div class="tabber">
+    {% for question in questions %}
+        {% if question in parents %}
+            {% for enfant in question.question_set.all %}
+       <!-- pour chaque relation entre 2 tables le set correspond a une recherche comme un join ici va chercher
+       tous les enfants de question (qui sont aussi des questions)-->
+                <!-- {% if forloop.counter == 1 %}-->
+                    <tr>
+                    {% include "name_snippet.html" with typequest=question.typequestion  quest=question.questionen questid=question.id pid=pid relation=enfant.relation cible=enfant.cible aide=question.aideen %}</tr>
+                <!-- {% endif %}-->
+            {% endfor %}
+        {% endif %}
+        {% for enfant in enfants %}
+            {% if enfant.parent in parents and enfant == question %}
+                <tr style="display: none;" class="child-row-{{question.parent_id}}{{question.relation}}{{question.cible}}">
+                {% include "name_snippet.html" with typequest=question.typequestion  quest=question.questionen questid=question.id pid=pid aide=question.aideen %}</tr>
+            {% endif %}
+        {% endfor %}
+        {% if question in orphelins %}
+            {% if question.typequestion.nom == 'TITLE' %}
+                {% if forloop.counter > 1 %}
+                     </table></div>
+                {% endif %}
+                 <div class="tabbertab"><h3>{{ question.questionen|slice:"0:15" }}</h3><b>{{ question.questionen}}</b>
+                 <table><tr><td></td><td></td><td></td></tr>
+            {% else %}
+               <tr>
+                {% include "name_snippet.html" with typequest=question.typequestion questid=question.id pid=pid quest=question.questionen aide=question.aideen %}</tr>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</table>
+{% endblock content %}

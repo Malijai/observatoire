@@ -1,0 +1,62 @@
+{% load formulaires %}
+{% with type=typequest|stringformat:"s" %}
+<!--include "name_snippet.html"  with typequest=question.typequestion questid=question.id-->
+{% if type == "STRING" or type == "NUMBER" %}
+    {% autoescape off %}
+       {% if aide %}
+			<td><a href="JavaScript:alert(' {{ aide }} ')">Info</a></td><td>{{ quest }}</td><td>
+       {% else %}
+            <td></td><td>{{ quest }}</td><td>
+        {% endif %}
+    {% fait_textechar questid type pid=pid parent=parent relation=relation cible=cible aide=aide %}</td>{% endautoescape %}
+{% elif type == "DATE" %}
+    {% autoescape off %}
+       {% if aide %}
+            <td><a href="JavaScript:alert(' {{ aide }} ')">Info</a></td><td>{{ quest }}</td><td>
+       {% else %}
+            <td></td><td>{{ quest }}</td><td>
+    {% endif %}
+        {% fait_date questid type pid=pid parent=parent relation=relation cible=cible aide=aide %}</td>
+    {% endautoescape %}
+{% elif type == "BOOLEAN" or type == "DICHO" or type == "DICHOU" or type == "DICHON" %}
+    {% autoescape off %}
+       {% if aide %}
+			<td><a href="JavaScript:alert(' {{ aide }} ')">Info</a></td><td>{{ quest }}</td><td>
+       {% else %}
+            <td></td><td>{{ quest }}</td><td>
+        {% endif %}
+         {% fait_dichou questid type pid=pid parent=parent relation=relation cible=cible aide=aide %}</td>{% endautoescape %}
+{% elif type == "PROVINCE"  or type == "PAYS" or type == "LANGUE" or type == "VIOLATION" %}
+    {% autoescape off %}
+       {% if aide %}
+			<td><a href="JavaScript:alert(' {{ aide }} ')">Info</a></td><td>{{ quest }}</td><td>
+       {% else %}
+            <td></td><td>{{ quest }}</td><td>
+        {% endif %}
+        {% fait_table questid type pid=pid parent=parent relation=relation cible=cible aide=aide %}</td>{% endautoescape %}
+{% elif type == "CATEGORIAL" %}
+    {% autoescape off %}
+       {% if aide %}
+			<td><a href="JavaScript:alert(' {{ aide }} ')">Info</a></td><td>{{ quest }}</td><td>
+       {% else %}
+            <td></td><td>{{ quest }}</td><td>
+        {% endif %}
+        {% fait_reponse questid type pid=pid parent=parent relation=relation cible=cible aide=aide %}</td>{% endautoescape %}
+{% elif type == "HCR20"  or type ==  "ETABLISSEMENT"  or type ==  "MUNICIPALITE" or type ==  "POSOLOGIE" or type == "VICTIME" %}
+    {% autoescape off %}
+       {% if aide %}
+			<td><a href="JavaScript:alert(' {{ aide }} ')">Info</a></td><td>{{ quest }}</td><td>
+       {% else %}
+            <td></td><td>{{ quest }}</td><td>
+        {% endif %}
+        {% fait_table_valeurs questid type pid=pid parent=parent relation=relation cible=cible aide=aide %}</td>{% endautoescape %}
+{% else %}
+    {% autoescape off %}
+       {% if aide %}
+			<td><a href="JavaScript:alert(' {{ aide }} ')">Info</a></td><td>{{ quest }} -- {{ type }}</td><td></td>
+       {% else %}
+            <td></td><td>{{ quest }} -- {{ type }}</td><td></td>
+        {% endif %}
+    {% endautoescape %}
+{% endif %}
+{% endwith %}

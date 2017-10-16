@@ -9,7 +9,7 @@ def isManitoba(http_host):
 
 def accueil(request):
     if isManitoba(request.META.get('HTTP_HOST')):
-        return render(request,'registration/logged_out.html')
+        return render(request,'logged_out.html')
     else:
         return render(request, "index.html")
 

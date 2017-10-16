@@ -1,0 +1,205 @@
+{% load i18n %}
+{% load static %}
+<html>
+   <head>
+         <title>Questions etc</title>
+         <!--<link rel="stylesheet" href="{% static 'blog/style_b.css' %}">-->
+         <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+         <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+         <!--<script type="text/javascript" src="/static/admin/js/core.js"></script>-->
+         <!--<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>-->
+         <!--<script type="text/javascript" src="/admin/jsi18n/"></script>-->
+
+        <script type="text/javascript" src="/static/jquery.js"></script>
+        <script type="text/javascript" src="/static/tabber.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/sondageM.css" />
+
+
+<script type="text/javascript" >
+$(function() {
+	$("input[@id^=row-]").click(function(){
+		var reg = new RegExp("X", "");
+		res = this.id.split(reg);
+		var cond=res[3];
+		var valeurcible=res[2];
+		var relation=res[1];
+		var enfant=res[0];
+		var valeurcible2;
+		var courant=$(this).val();
+
+		if(valeurcible=='vide'){
+			valeurcible2='';
+		}else{
+			valeurcible2= valeurcible;
+			valeurcible=parseInt(valeurcible, 10);
+			courant=parseInt(courant, 10);
+			valeurcible2=parseInt(valeurcible2, 10);
+			}
+		if (relation=='eq'){
+			if(courant == valeurcible2) {
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else if(relation=='inf'){
+			if(courant < valeurcible2) {
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else if(relation=='sup'){
+			if(courant > valeurcible2) {
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else{
+			if(courant != valeurcible2){
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					 $('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}
+	});
+});
+</script>
+
+<script type="text/javascript" >
+$(function() {
+$("select[@id^=row-]").click(function(){
+
+	var reg = new RegExp("X", "");
+	res = this.id.split(reg);
+	var valeurcible=res[2];
+	var relation=res[1];
+	var enfant=res[0];
+	var courant=$(this).val();
+
+	if(valeurcible=='vide'){
+			valeurcibl2='';
+	}
+valeurcible=parseInt(valeurcible, 10);
+courant=parseInt(courant, 10);
+
+	if (relation=='eq'){
+		if(courant == valeurcible) {
+			$('.child-'+enfant+relation+valeurcible).show();
+		}else{
+			$('.child-'+enfant+relation+valeurcible).hide();
+		}
+		}else if(relation=='inf'){
+			if(courant < valeurcible) {
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else if(relation=='sup'){
+			if(courant > valeurcible) {
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else{
+			if(courant != valeurcible){
+				$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+				$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}
+	});
+});
+</script>
+
+<script type="text/javascript" >
+$(function() {
+$("select[@id^=row-]").click(function(){
+ 		var reg = new RegExp("X", "");
+		res = this.id.split(reg);
+		var cond=res[3];
+		var valeurcible=res[2];
+		var relation=res[1];
+		var enfant=res[0];
+		var courant=$(this).val();
+
+valeurcible=parseInt(valeurcible, 10);
+courant=parseInt(courant, 10);
+
+		if (relation=='eq'){
+			if(courant == valeurcible) {
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else if (relation=='inf'){
+			if(courant < valeurcible){
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					 $('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else if (relation=='sup'){
+			if(courant > valeurcible){
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					 $('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else{
+			if(courant != valeurcible){
+					$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+					 $('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}
+	});
+});
+</script>
+
+<script type="text/javascript" >
+$(function() {
+	$("TextArea[@id^=row-]").blur(function(){
+		var reg = new RegExp("X", "");
+		res = this.id.split(reg);
+		var cond=res[3];
+		var valeurcible=res[2];
+		var relation=res[1];
+		var enfant=res[0];
+		var valeurcible2;
+		if(valeurcible=='vide'){
+			valeurcible2='';
+		}else{
+			valeurcible2= valeurcible;
+			}
+		if (relation=='eq'){
+			if($(this).val() == valeurcible2) {
+				$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+				$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}else{
+			if($(this).val() != valeurcible2){
+				$('.child-'+enfant+relation+valeurcible).show();
+			}else{
+				$('.child-'+enfant+relation+valeurcible).hide();
+			}
+		}
+	});
+});
+</script>
+
+</head>
+    <body>
+    <form action="" method="post">
+    <div id="container">
+
+
+    {% block content %}
+
+    {% endblock %}
+
+        </div><!--Fermeture de la boite à onglets--> '
+    </div>
+    <button type="submit" class="btn-default">Save</button>
+    </form>
+</div>
+    </body>
+</html>
+

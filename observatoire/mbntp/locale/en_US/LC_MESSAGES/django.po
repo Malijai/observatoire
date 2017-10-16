@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-02 21:18+0000\n"
+"POT-Creation-Date: 2017-10-15 21:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,36 +16,231 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: accueil/templates/index.html:31
+msgid "Bienvenue sur le site privé de l'observatoire"
+msgstr "Welcome on the private part of the think tank"
+
+#: accueil/templates/index.html:32
+#, python-format
+msgid ""
+"\n"
+"            Vous devez être inscrit pour accéder au blog et au dépot de "
+"documents.</p>\n"
+"            <p>Si vous désirez participer à cet observatoire veuillez en "
+"faire la demande par courriel en suivant ce lien :\n"
+"            <a href=\"mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp."
+"gagnon.ippm@ssss.gouv.qc.ca&subject=Inscription%%20pour%%20observatoire\">\n"
+"                Demande d'inscription à l'observatoire santé mentale justice "
+"du Québec</a></p>\n"
+"        "
+msgstr ""
+"\n"
+"        You have to register to access to the blog and file manager. </p>\n"
+"        <p>If you want to participate to the think-tank, please email us in "
+"following this link:\n"
+"        <a href=\"mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp.gagnon."
+"ippm@ssss.gouv.qc.ca&subject=Inscription%%20pour%%20observatoire\">\n"
+"            Ask for a login to the Think-tank </a></p>\n"
+"    "
+
+#: accueil/templates/index.html:38
+msgid "Accès au blog"
+msgstr "Go to the blog"
+
+#: accueil/templates/index.html:39 indexmb/templates/index.html:35
+msgid "Accès au dépot de fichiers"
+msgstr "Go to the file repository"
+
+#: accueil/templates/index.html:42
+msgid "Répertoire des ressources"
+msgstr ""
+
+#: accueil/templates/index.html:42
+msgid " Pour rentrer les informations et documents sur les resources"
+msgstr ""
+
+#: accueil/templates/index.html:43
+msgid "Scoping Review"
+msgstr ""
+
+#: accueil/templates/index.html:43
+msgid " Scoping review"
+msgstr ""
+
+#: accueil/templates/index.html:44
+msgid ""
+"Pour suivre l'envoi et la réception des invitations, accès réservé aux PI :"
+msgstr ""
+
+#: accueil/templates/index.html:45
+#, fuzzy
+#| msgid "Accès au système d'entrée des données"
+msgid "Accès à la liste d'envoi des invitations"
+msgstr "Go to the data entry system"
+
 #: blog/forms.py:11
 msgid "Votre commentaire"
 msgstr "Comments"
 
-#: blog/forms.py:18
+#: blog/forms.py:19
 msgid "Votre texte"
 msgstr "Your text"
 
-#: blog/forms.py:19
+#: blog/forms.py:20
 msgid "Votre titre doit etre explicite"
 msgstr "The title as to be clear"
 
-#: blog/forms.py:20
+#: blog/forms.py:21
 msgid "Indiquez des mots clefs (Ctrl + Click)"
 msgstr "Choose keywords (Ctrl + Click)"
 
-#: blog/forms.py:26
+#: blog/forms.py:22
+msgid "Indiquer le groupe cible si nécessaire"
+msgstr ""
+
+#: blog/forms.py:30
 msgid "Entrer un mot clef"
 msgstr "New keyword"
 
-#: blog/models.py:13
+#: blog/models.py:14
 msgid "Ce mot clef existe déjà"
 msgstr "This keyword already exists"
 
-#: blog/views.py:49
+#: blog/templates/base.html:24
+msgid "Ajouter un billet"
+msgstr "Add a post"
+
+#: blog/templates/base.html:25
+msgid "Recherche"
+msgstr "Find"
+
+#: blog/templates/base.html:27 blog/templates/base_r.html:24
+msgid "Fichiers"
+msgstr "Files"
+
+#: blog/templates/blogdetail.html:8
+#, python-format
+msgid ""
+"\n"
+"        Publié le : %(date)s par : %(auteurP)s %(auteurN)s\n"
+"        "
+msgstr ""
+"\n"
+"Published on  %(date)s by: %(auteurP)s, %(auteurN)s\n"
+"        "
+
+#: blog/templates/blogdetail.html:16 depot/templates/dossier.html:15
+msgid "Commentaires"
+msgstr "Comments"
+
+#: blog/templates/blogdetail.html:19
+msgid "Commenté par : "
+msgstr "Commented by "
+
+#: blog/templates/blogdetail.html:20
+msgid " le : "
+msgstr " on: "
+
+#: blog/templates/blogdetail.html:21
+#, python-format
+msgid ""
+"\n"
+"            <li>Par %(auteurP)s %(auteurN)s le %(date)s</li>\n"
+"                <p>%(texte)s</p>\n"
+"            "
+msgstr ""
+"\n"
+"            <li>By %(auteurP)s %(auteurN)s on the %(date)s</li>\n"
+"                <p>%(texte)s</p>\n"
+"            "
+
+#: blog/templates/blogdetail.html:27 blog/templates/list.html:5
+#: blog/templates/list.html:25
+msgid "Mots clefs"
+msgstr "Keywords"
+
+#: blog/templates/blogdetail.html:35
+msgid "Commenter ce billet"
+msgstr "Comment this post"
+
+#: blog/templates/blogdetail.html:41
+msgid "Retour à la liste"
+msgstr "Back to list"
+
+#: blog/templates/commentaire_edit.html:5
+msgid "Nouveau commentaire au billet : "
+msgstr "New comment to the post:"
+
+#: blog/templates/entree_edit.html:6
+msgid "Nouveau billet"
+msgstr "New post"
+
+#: blog/templates/entree_edit.html:20
+msgid "Liste des mots clefs disponibles"
+msgstr "List of keywords"
+
+#: blog/templates/entree_edit.html:26
+msgid ""
+"Si vous désirez ajouter un mot clef, faites le avant d'écrire votre texte"
+msgstr "If you need to add a keyword, do it BEFORE writing your post"
+
+#: blog/templates/entree_edit.html:27
+msgid "Ajouter un mot clef à la liste"
+msgstr "Add a keyword to the list"
+
+#: blog/templates/list.html:23
+msgid "Voir plus / Commenter"
+msgstr "See / Comment"
+
+#: blog/templates/recherche.html:6
+msgid "Recherche de terme (ou de portion de mot) dans les textes du blog"
+msgstr "Find word (or part of word) in the blog texts"
+
+#: blog/templates/recherche.html:8
+msgid "Le terme :"
+msgstr "The word: "
+
+#: blog/templates/recherche.html:8
+msgid " n'a pas été trouvé dans les textes"
+msgstr " has not be found in the texts"
+
+#: blog/templates/recherche.html:16
+msgid "Rechercher"
+msgstr "Find"
+
+#: blog/templates/tag_edit.html:6
+msgid "Nouveau mot clef"
+msgstr "New keyword"
+
+#: blog/templates/tag_edit.html:19
+msgid "Mots clefs existants"
+msgstr "Keywords"
+
+#: blog/templates/view_tag.html:6
+msgid "Billets avec le mot clef suivant : "
+msgstr "Posts with the keyword: "
+
+#: blog/templates/view_tag.html:15
+msgid "Il n'y a pas de billet "
+msgstr "There is no post "
+
+#: blog/views.py:39
 msgid "Nouveau commentaire dans le blog de l'observatoire"
 msgstr "New comment in the research blog"
 
-#: blog/views.py:50
+#: blog/views.py:40
+#, fuzzy
+#| msgid ""
+#| "Un nouveau commentaire au billet intitulé : {} vient d'être publié par {} "
+#| "{}.\n"
+#| "Vous recevez ce courriel parce que vous ête membre de l'Observatoire en "
+#| "santé mentale et justice du Québec.\n"
+#| "Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.\n"
+#| "Merci de participer à ce projet.\n"
+#| "\n"
+#| "Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)\n"
 msgid ""
+"\n"
 "Un nouveau commentaire au billet intitulé : {} vient d'être publié par {} "
 "{}.\n"
 "Vous recevez ce courriel parce que vous ête membre de l'Observatoire en "
@@ -54,6 +249,7 @@ msgid ""
 "Merci de participer à ce projet.\n"
 "\n"
 "Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)\n"
+"    "
 msgstr ""
 "A new comment to the post: {} has been written by {} {}.\n"
 "\n"
@@ -63,12 +259,22 @@ msgstr ""
 "\n"
 "Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)\n"
 
-#: blog/views.py:83
+#: blog/views.py:53
 msgid "Nouveau billet dans le blog de l'observatoire"
 msgstr "New post in the research blog"
 
-#: blog/views.py:84
+#: blog/views.py:54
+#, fuzzy
+#| msgid ""
+#| "Un nouveau billet intitulé : {} vient d'être publié par {} {}.\n"
+#| "Vous recevez ce courriel parce que vous ête membre de l'Observatoire en "
+#| "santé mentale et justice du Québec.\n"
+#| "Ne répondez pas à ce courriel, il s'agit d'un envoi automatisé.\n"
+#| "Merci de participer à ce projet.\n"
+#| "\n"
+#| "Malijaï Caulet (malijai.caulet.ippm@ssss.gouv.qc.ca)\n"
 msgid ""
+"\n"
 "Un nouveau billet intitulé : {} vient d'être publié par {} {}.\n"
 "Vous recevez ce courriel parce que vous ête membre de l'Observatoire en "
 "santé mentale et justice du Québec.\n"
@@ -97,6 +303,46 @@ msgstr "Description"
 msgid "Nom du sous-dossier"
 msgstr "New sub folder"
 
+#: depot/templates/base_d.html:29 depot/templates/base_d1.html:29
+msgid "Dépot de documents"
+msgstr "File repository"
+
+#: depot/templates/dossier.html:14
+msgid "Nom"
+msgstr "Name"
+
+#: depot/templates/dossier.html:34
+msgid "Pour ajouter un sous-dossier au dossier"
+msgstr "To add a sub folder to the current folder "
+
+#: depot/templates/dossier.html:38
+msgid "Créer un sous-dossier"
+msgstr "Create a sub folder"
+
+#: depot/templates/dossier.html:43
+msgid "Pour ajouter un document au dossier"
+msgstr "To add a document to the current folder "
+
+#: depot/templates/dossier.html:49
+msgid "Téléverser"
+msgstr "Upload"
+
+#: depot/templates/dossier_edit.html:5
+msgid "Nouveau sous dossier"
+msgstr "New sub folder"
+
+#: indexmb/templates/index.html:33
+msgid "Bienvenue sur le site NTP MB"
+msgstr "Welcome on site of the NTP replication for the Manitoba"
+
+#: indexmb/templates/index.html:34
+msgid "Accès au blog de l'observatoire"
+msgstr "Go to the blog"
+
+#: indexmb/templates/index.html:36
+msgid "Accès au système d'entrée des données"
+msgstr "Go to the data entry system"
+
 #: mbntp/settings.py:133
 msgid "French"
 msgstr "Français"
@@ -105,201 +351,20 @@ msgstr "Français"
 msgid "English"
 msgstr "Anglais"
 
-#: templates/blog/base.html:24
-msgid "Ajouter un billet"
-msgstr "Add a post"
-
-#: templates/blog/base.html:25
-msgid "Recherche"
-msgstr "Find"
-
-#: templates/blog/base.html:27 templates/blog/base_r.html:24
-msgid "Fichiers"
-msgstr "Files"
-
-#: templates/blog/blogdetail.html:8
-#, python-format
-msgid ""
-"\n"
-"        Publié le : %(date)s par : %(auteurP)s %(auteurN)s\n"
-"        "
+#: scopingreview/templates/index.html:18
+msgid "Générer le pdf"
 msgstr ""
-"\n"
-"Published on  %(date)s by: %(auteurP)s, %(auteurN)s\n"
-"        "
 
-#: templates/blog/blogdetail.html:15 templates/depot/dossier.html:15
-msgid "Commentaires"
-msgstr "Comments"
-
-#: templates/blog/blogdetail.html:18
-msgid "Commenté par : "
-msgstr "Commented by "
-
-#: templates/blog/blogdetail.html:19
-msgid " le : "
-msgstr " on: "
-
-#: templates/blog/blogdetail.html:20
-msgid ""
-"\n"
-"            <li>Par %(auteurP)s %(auteurN)s le %(date)s</li>\n"
-"                <p>%(texte)s</p>\n"
-"            "
+#: scopingreview/templates/index.html:23
+msgid "Exporter tout en csv"
 msgstr ""
-"\n"
-"            <li>By %(auteurP)s %(auteurN)s on the %(date)s</li>\n"
-"                <p>%(texte)s</p>\n"
-"            "
-
-#: templates/blog/blogdetail.html:26 templates/blog/list.html:5
-msgid "Mots clefs"
-msgstr "Keywords"
-
-#: templates/blog/blogdetail.html:34
-msgid "Commenter ce billet"
-msgstr "Comment this post"
-
-#: templates/blog/blogdetail.html:40
-msgid "Retour à la liste"
-msgstr "Back to list"
-
-#: templates/blog/commentaire_edit.html:5
-msgid "Nouveau commentaire au billet : "
-msgstr "New comment to the post:"
-
-#: templates/blog/entree_edit.html:6
-msgid "Nouveau billet"
-msgstr "New post"
-
-#: templates/blog/entree_edit.html:19
-msgid "Liste des mots clefs disponibles"
-msgstr "List of keywords"
-
-#: templates/blog/entree_edit.html:25
-msgid ""
-"Si vous désirez ajouter un mot clef, faites le avant d'écrire votre texte"
-msgstr "If you need to add a keyword, do it BEFORE writing your post"
-
-#: templates/blog/entree_edit.html:26
-msgid "Ajouter un mot clef à la liste"
-msgstr "Add a keyword to the list"
-
-#: templates/blog/list.html:23
-msgid "Voir plus / Commenter"
-msgstr "See / Comment"
-
-#: templates/blog/recherche.html:6
-msgid "Recherche de terme (ou de portion de mot) dans les textes du blog"
-msgstr "Find word (or part of word) in the blog texts"
-
-#: templates/blog/recherche.html:8
-msgid "Le terme :"
-msgstr "The word: "
-
-#: templates/blog/recherche.html:8
-msgid " n'a pas été trouvé dans les textes"
-msgstr " has not be found in the texts"
-
-#: templates/blog/recherche.html:16
-msgid "Rechercher"
-msgstr "Find"
-
-#: templates/blog/tag_edit.html:6
-msgid "Nouveau mot clef"
-msgstr "New keyword"
-
-#: templates/blog/tag_edit.html:19
-msgid "Mots clefs existants"
-msgstr "Keywords"
-
-#: templates/blog/view_tag.html:6
-msgid "Billets avec le mot clef suivant : "
-msgstr "Posts with the keyword: "
-
-#: templates/blog/view_tag.html:15
-msgid "Il n'y a pas de billet "
-msgstr "There is no post "
-
-#: templates/depot/base_d.html:29 templates/depot/base_d1.html:29
-msgid "Dépot de documents"
-msgstr "File repository"
-
-#: templates/depot/dossier.html:14
-msgid "Nom"
-msgstr "Name"
-
-#: templates/depot/dossier.html:34
-msgid "Pour ajouter un sous-dossier au dossier"
-msgstr "To add a sub folder to the current folder "
-
-#: templates/depot/dossier.html:38
-msgid "Créer un sous-dossier"
-msgstr "Create a sub folder"
-
-#: templates/depot/dossier.html:43
-msgid "Pour ajouter un document au dossier"
-msgstr "To add a document to the current folder "
-
-#: templates/depot/dossier.html:49
-msgid "Téléverser"
-msgstr "Upload"
-
-#: templates/depot/dossier_edit.html:5
-msgid "Nouveau sous dossier"
-msgstr "New sub folder"
-
-#: templates/index.html:31
-msgid "Bienvenue sur le site privé de l'observatoire"
-msgstr "Welcome on the private part of the think tank"
-
-#: templates/index.html:32
-msgid ""
-"\n"
-"            Vous devez être inscrit pour accéder au blog et au dépot de "
-"documents.</p>\n"
-"            <p>Si vous désirez participer à cet observatoire veuillez en "
-"faire la demande par courriel en suivant ce lien :\n"
-"            <a href=\"mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp."
-"gagnon.ippm@ssss.gouv.qc.ca&subject=Inscription%%20pour%%20observatoire\">\n"
-"                Demande d'inscription à l'observatoire santé mentale justice "
-"du Québec</a></p>\n"
-"        "
-msgstr ""
-"\n"
-"        You have to register to access to the blog and file manager. </p>\n"
-"        <p>If you want to participate to the think-tank, please email us in "
-"following this link:\n"
-"        <a href=\"mailto:malijai.caulet.ippm@ssss.gouv.qc.ca?cc=jp.gagnon."
-"ippm@ssss.gouv.qc.ca&subject=Inscription%%20pour%%20observatoire\">\n"
-"            Ask for a login to the Think-tank </a></p>\n"
-"    "
-
-#: templates/index.html:38
-msgid "Accès au blog"
-msgstr "Go to the blog"
-
-#: templates/index.html:39 templates/indexmb/index.html:35
-msgid "Accès au dépot de fichiers"
-msgstr "Go to the file repository"
-
-#: templates/indexmb/index.html:33
-msgid "Bienvenue sur le site NTP MB"
-msgstr "Welcome on site of the NTP replication for the Manitoba"
-
-#: templates/indexmb/index.html:34
-msgid "Accès au blog de l'observatoire"
-msgstr "Go to the blog"
-
-#: templates/indexmb/index.html:36
-msgid "Accès au système d'entrée des données"
-msgstr "Go to the data entry system"
 
 #: templates/registration/logged_out.html:7
 msgid "Délogué!"
 msgstr "Logged out!"
 
 #: templates/registration/logged_out.html:10
+#: templates/registration/logged_out.html:12
 msgid "Se reloguer"
 msgstr "Click here to login again"
 
